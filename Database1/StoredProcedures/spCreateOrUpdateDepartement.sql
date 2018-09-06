@@ -20,7 +20,7 @@ BEGIN
 	begin
 
 		UPDATE [dbo].Departement
-			SET [DepartementName] = @Name
+			SET [DepartementName] = @Name, [CompanyId] = @CompanyId
 			WHERE Id = @Id
 	end
 	
