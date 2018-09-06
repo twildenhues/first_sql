@@ -10,8 +10,8 @@ BEGIN
 	if(@DBId is null)
 	begin 
 
-		INSERT INTO [dbo].Company (Name)
-		VALUES (@Name)
+		INSERT INTO [dbo].Company (Name, CreatedTime)
+		VALUES (@Name, GETDATE())
 
 		Set @DBId = @@IDENTITY
 	end

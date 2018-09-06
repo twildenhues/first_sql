@@ -1,0 +1,55 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       Kein
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Die Spalte "[dbo].[Company].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Company].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Departement].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Departement].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Employee].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Employee].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+
+** Benutzeraktionen
+     Löschen
+       unbenannte Einschränkungen auf [dbo].[Company] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Company] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Departement] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Departement] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Employee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Employee] (DEFAULT-Einschränkung)
+     Ändern
+       [dbo].[Company] (Tabelle)
+       [dbo].[Departement] (Tabelle)
+       [dbo].[Employee] (Tabelle)
+       [dbo].[viCompany] (Sicht)
+       [dbo].[viDepartement] (Sicht)
+       [dbo].[viEmployee] (Sicht)
+     Erstellen
+       [dbo].[Address] (Tabelle)
+       [dbo].[Address2Company] (Tabelle)
+       [dbo].[Address2Employee] (Tabelle)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[Address] (DEFAULT-Einschränkung)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[Address2Company] (DEFAULT-Einschränkung)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[Address2Employee] (DEFAULT-Einschränkung)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Company] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Company] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Employee] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Employee] (Fremdschlüssel)
+       [dbo].[viAddress] (Sicht)
+       [dbo].[spCreateOrUpdateCompany] (Prozedur)
+       [dbo].[spCreateOrUpdateDepartement] (Prozedur)
+       [dbo].[spCreateOrUpdateEmployee] (Prozedur)
+
+** Unterstützende Aktionen
+
+Die Spalte "[dbo].[Company].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Company].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Departement].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Departement].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Employee].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Employee].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+

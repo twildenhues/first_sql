@@ -1,0 +1,90 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       [dbo].[Address]
+       [dbo].[AddressCompany]
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Die Spalte "[dbo].[Address].[EmplyoyeesId]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Address].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Address].[City]" in der Tabelle "[dbo].[Address]" muss hinzugefügt werden, besitzt jedoch keinen
+         Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um
+         dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte
+         zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+       Die Spalte "[dbo].[Address].[ZIP]" in der Tabelle "[dbo].[Address]" muss hinzugefügt werden, besitzt jedoch keinen
+         Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um
+         dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte
+         zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+       Die Spalte "[dbo].[AddressCompany].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[AddressCompany].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[AddressEmployee].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[AddressEmployee].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Company].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Company].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Departement].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Departement].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Employee].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Employee].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+
+** Benutzeraktionen
+     Löschen
+       unbenannte Einschränkungen auf [dbo].[Address] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressCompany] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressCompany] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressEmployee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressEmployee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Company] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Company] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Departement] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Departement] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Employee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Employee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressCompany] (Fremdschlüssel)
+     Tabellenneuerstellung
+       [dbo].[Address] (Tabelle)
+       [dbo].[AddressCompany] (Tabelle)
+     Ändern
+       [dbo].[AddressEmployee] (Tabelle)
+       [dbo].[Company] (Tabelle)
+       [dbo].[Departement] (Tabelle)
+       [dbo].[Employee] (Tabelle)
+       [dbo].[viAddressCompany] (Sicht)
+       [dbo].[viAddressEmployee] (Sicht)
+       [dbo].[viEmployee] (Sicht)
+       [dbo].[viCompany] (Sicht)
+       [dbo].[viDepartement] (Sicht)
+       [dbo].[spCreateOrUpdateCompany] (Prozedur)
+     Erstellen
+       [dbo].[Address2Company] (Tabelle)
+       [dbo].[Address2Employee] (Tabelle)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[Address2Company] (DEFAULT-Einschränkung)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[Address2Employee] (DEFAULT-Einschränkung)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Company] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Company] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Employee] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Address2Employee] (Fremdschlüssel)
+       [dbo].[viAddress] (Sicht)
+       [dbo].[spCreateOrUpdateDepartement] (Prozedur)
+       [dbo].[spCreateOrUpdateEmployee] (Prozedur)
+
+** Unterstützende Aktionen
+     Erstellen
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[AddressCompany] (Fremdschlüssel)
+
+Die Spalte "[dbo].[Address].[EmplyoyeesId]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Address].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Address].[City]" in der Tabelle "[dbo].[Address]" muss hinzugefügt werden, besitzt jedoch keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+Die Spalte "[dbo].[Address].[ZIP]" in der Tabelle "[dbo].[Address]" muss hinzugefügt werden, besitzt jedoch keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+Die Spalte "[dbo].[AddressCompany].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[AddressCompany].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[AddressEmployee].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[AddressEmployee].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Company].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Company].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Departement].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Departement].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Employee].[IsDeleted]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Employee].[TimeStamp]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+

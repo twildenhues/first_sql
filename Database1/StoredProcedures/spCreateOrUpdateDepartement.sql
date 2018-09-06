@@ -11,8 +11,8 @@ BEGIN
 	if(@DBId is null)
 	begin 
 
-		INSERT INTO [dbo].Departement(DepartementName, CompanyId)
-		VALUES (@Name, @CompanyId)
+		INSERT INTO [dbo].Departement(DepartementName, CompanyId, CreatedTime)
+		VALUES (@Name, @CompanyId, GETDATE())
 
 		Set @DBId = @@IDENTITY
 	end
