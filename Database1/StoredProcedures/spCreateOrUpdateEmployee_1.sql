@@ -1,25 +1,27 @@
 ﻿CREATE PROCEDURE [dbo].[spCreateOrUpdateEmployee]
-	@Name nvarchar(128),
+	@FirstName nvarchar(128),
+	@LastName nvarchar(128),
+	@Gender int,
 	@Id int = -1
 AS
 BEGIN 
 
 	declare @DBId int
-	Set @DBId = (select Id from Departement where Id = @Id)
+	Set @DBId = (select Id from Employee where Id = @Id)
 	
 	if(@DBId is null)
 	begin 
 
-		INSERT INTO [dbo].Departement(DepartementName)
-		VALUES (@Name)
+		INSERT INTO [dbo].Employee(FirstName , LastName, Gender)
+		VALUES (@FirstName, @LastName, @Gender)
 
 		Set @DBId = @@IDENTITY
 	end
 	else
 	begin
 
-		UPDATE [dbo].Departement
-			SET [DepartementName] = @Name
+		UPDATE [dbo].Employee
+			SET [FirstName] = @FirstName
 			WHERE Id = @Id
 	end
 	

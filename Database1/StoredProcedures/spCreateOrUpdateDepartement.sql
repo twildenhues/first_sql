@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[spCreateOrUpdateDepartement]
 	@Name nvarchar(128),
-	@Id int = -1
+	@Id int = -1,
+	@CompanyId int 
 AS
 BEGIN 
 
@@ -10,8 +11,8 @@ BEGIN
 	if(@DBId is null)
 	begin 
 
-		INSERT INTO [dbo].Departement(DepartementName)
-		VALUES (@Name)
+		INSERT INTO [dbo].Departement(DepartementName, CompanyId)
+		VALUES (@Name, @CompanyId)
 
 		Set @DBId = @@IDENTITY
 	end
