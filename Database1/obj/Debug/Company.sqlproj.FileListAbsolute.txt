@@ -1,0 +1,10 @@
+C:\Users\twildenhues\source\repos\Company\Database1\bin\Debug\Company.dacpac
+C:\Users\twildenhues\source\repos\Company\Database1\bin\Debug\Database1.dll
+C:\Users\twildenhues\source\repos\Company\Database1\bin\Debug\Database1.pdb
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\Database1.dll
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\Database1.pdb
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\Company.sqlprojAssemblyReference.cache
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\Model.xml
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\refactor.xml
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\postdeploy.sql
+C:\Users\twildenhues\source\repos\Company\Database1\obj\Debug\predeploy.sql

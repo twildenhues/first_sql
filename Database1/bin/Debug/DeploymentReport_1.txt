@@ -1,0 +1,62 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       [dbo].[AddressCompany]
+       [dbo].[Employees]
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Die Spalte "[dbo].[AddressCompany].[City]" in der Tabelle "[dbo].[AddressCompany]" muss hinzugefügt werden, besitzt
+         jedoch keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das
+         ALTER-Skript nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so
+         kennzeichnen, dass NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als
+         Bereitstellungsoption aktivieren.
+       Die Spalte "[dbo].[Employees].[first_name]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Employees].[last_name]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+       Die Spalte "[dbo].[Employees].[FirstName]" in der Tabelle "[dbo].[Employees]" muss hinzugefügt werden, besitzt jedoch
+         keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript
+         nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass
+         NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+       Die Spalte "[dbo].[Employees].[LastName]" in der Tabelle "[dbo].[Employees]" muss hinzugefügt werden, besitzt jedoch
+         keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript
+         nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass
+         NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+
+** Benutzeraktionen
+     Löschen
+       unbenannte Einschränkungen auf [dbo].[AddressCompany] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[Employees] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressCompany] (Fremdschlüssel)
+       unbenannte Einschränkungen auf [dbo].[Address] (Fremdschlüssel)
+       unbenannte Einschränkungen auf [dbo].[Departements] (Fremdschlüssel)
+       unbenannte Einschränkungen auf [dbo].[Employees] (Fremdschlüssel)
+     Tabellenneuerstellung
+       [dbo].[AddressCompany] (Tabelle)
+       [dbo].[Employees] (Tabelle)
+     Ändern
+       [dbo].[Company] (Tabelle)
+       [dbo].[Departements] (Tabelle)
+     Erstellen
+       [dbo].[AddressEmployees] (Tabelle)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[AddressEmployees] (DEFAULT-Einschränkung)
+       DEFAULT-Einschränkung: unbenannte Einschränkungen auf [dbo].[AddressEmployees] (DEFAULT-Einschränkung)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[AddressEmployees] (Fremdschlüssel)
+       [dbo].[viAddressCompany] (Sicht)
+       [dbo].[viAddressEmployee] (Sicht)
+       [dbo].[viCompany] (Sicht)
+       [dbo].[viDepartement] (Sicht)
+       [dbo].[viEmployee] (Sicht)
+
+** Unterstützende Aktionen
+     Erstellen
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[AddressCompany] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Departements] (Fremdschlüssel)
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Employees] (Fremdschlüssel)
+
+Die Spalte "[dbo].[AddressCompany].[City]" in der Tabelle "[dbo].[AddressCompany]" muss hinzugefügt werden, besitzt jedoch keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+Die Spalte "[dbo].[Employees].[first_name]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Employees].[last_name]" wird gelöscht, es könnte zu einem Datenverlust kommen.
+Die Spalte "[dbo].[Employees].[FirstName]" in der Tabelle "[dbo].[Employees]" muss hinzugefügt werden, besitzt jedoch keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+Die Spalte "[dbo].[Employees].[LastName]" in der Tabelle "[dbo].[Employees]" muss hinzugefügt werden, besitzt jedoch keinen Standardwert und unterstützt keine NULL-Werte. Wenn die Tabelle Daten enthält, funktioniert das ALTER-Skript nicht. Um dieses Problem zu vermeiden, müssen Sie der Spalte einen Standardwert hinzufügen, sie so kennzeichnen, dass NULL-Werte zulässig sind, oder die Generierung von intelligenten Standardwerten als Bereitstellungsoption aktivieren.
+
