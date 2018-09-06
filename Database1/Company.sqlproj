@@ -58,17 +58,26 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="view" />
+    <Folder Include="table" />
+    <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Company.sql" />
-    <Build Include="Departements.sql" />
-    <Build Include="Employees.sql" />
-    <Build Include="AddressEmployees.sql" />
-    <Build Include="AddressCompany.sql" />
     <Build Include="view\viEmployee.sql" />
     <Build Include="view\viDepartement.sql" />
     <Build Include="view\viCompany.sql" />
     <Build Include="view\viAddressEmployee.sql" />
     <Build Include="view\viAddressCompany.sql" />
+    <Build Include="table\AddressCompany.sql" />
+    <Build Include="table\Company.sql" />
+    <Build Include="table\Employee.sql" />
+    <Build Include="table\Departement.sql" />
+    <Build Include="table\AddressEmployee.sql" />
+    <Build Include="table\Address.sql" />
+    <Build Include="StoredProcedures\spCreateOrUpdateCompany.sql" />
+    <Build Include="view\viAddress.sql" />
+    <Build Include="table\Address2Company.sql" />
+    <Build Include="table\Address2Employee.sql" />
+    <Build Include="StoredProcedures\spCreateOrUpdateDepartement.sql" />
+    <Build Include="StoredProcedures\spCreateOrUpdateEmployee_1.sql" />
   </ItemGroup>
 </Project>

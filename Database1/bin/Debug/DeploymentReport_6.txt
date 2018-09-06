@@ -1,0 +1,21 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       Kein
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Kein
+
+** Benutzeraktionen
+     Löschen
+       unbenannte Einschränkungen auf [dbo].[Departement] (Fremdschlüssel)
+     Ändern
+       [dbo].[Departement] (Tabelle)
+
+** Unterstützende Aktionen
+     Erstellen
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[Departement] (Fremdschlüssel)
+     Aktualisieren
+       [dbo].[viDepartement] (Sicht)

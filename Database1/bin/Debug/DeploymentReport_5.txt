@@ -1,0 +1,24 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       [dbo].[AddressEmployee]
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Kein
+
+** Benutzeraktionen
+     Löschen
+       unbenannte Einschränkungen auf [dbo].[AddressEmployee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressEmployee] (DEFAULT-Einschränkung)
+       unbenannte Einschränkungen auf [dbo].[AddressEmployee] (Fremdschlüssel)
+     Tabellenneuerstellung
+       [dbo].[AddressEmployee] (Tabelle)
+
+** Unterstützende Aktionen
+     Erstellen
+       Fremdschlüssel: unbenannte Einschränkungen auf [dbo].[AddressEmployee] (Fremdschlüssel)
+     Aktualisieren
+       [dbo].[viAddressEmployee] (Sicht)
+       [dbo].[viEmployee] (Sicht)

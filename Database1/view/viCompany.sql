@@ -1,3 +1,3 @@
 ﻿CREATE VIEW [dbo].[viCompany]
-	AS SELECT c.Id, c.Name, c.TimeStamp FROM [Company] c
-WHERE c.IsDeleted = 0;
+	AS SELECT c.Id, c.Name, c.CreatedTime FROM [Company] c
+WHERE c.DeletedTime = NULL;

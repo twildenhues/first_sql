@@ -1,0 +1,18 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       Kein
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Kein
+
+** Benutzeraktionen
+     Löschen
+       [dbo].[viEmployee].[MS_DiagramPane1] (Erweiterte Eigenschaft)
+       [dbo].[viEmployee].[MS_DiagramPaneCount] (Erweiterte Eigenschaft)
+     Ändern
+       [dbo].[viEmployee] (Sicht)
+
+** Unterstützende Aktionen
