@@ -77,6 +77,7 @@
     <Build Include="StoredProcedures\spCreateOrUpdateDepartement.sql" />
     <Build Include="StoredProcedures\spCreateOrUpdateEmployee_1.sql" />
     <None Include="Functions\DetermineGender.sql" />
+    <Build Include="StoredProcedures\spCreateOrUpdateAddress.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Company.publish.xml" />

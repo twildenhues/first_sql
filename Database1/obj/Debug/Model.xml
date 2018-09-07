@@ -49,22 +49,6 @@
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Address]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[Address].[CreatedTime]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[GETDATE()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
 					<References Name="[dbo].[Departement]" />
 				</Entry>
 			</Relationship>
@@ -73,7 +57,7 @@
 					<References Name="[dbo].[Departement].[CreatedTime]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -89,7 +73,7 @@
 					<References Name="[dbo].[Address2Company].[CreationTime]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -105,7 +89,7 @@
 					<References Name="[dbo].[Address2Employee].[CreationTime]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -121,7 +105,7 @@
 					<References Name="[dbo].[Company].[CreatedTime]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -135,6 +119,22 @@
 			<Relationship Name="ForColumn">
 				<Entry>
 					<References Name="[dbo].[Employee].[CreatedTime]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Address]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[Address].[CreatedTime]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
@@ -306,25 +306,6 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[Address].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Address]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
 								<References Name="[dbo].[Departement].[Id]" />
 							</Entry>
 						</Relationship>
@@ -336,7 +317,7 @@
 					<References Name="[dbo].[Departement]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -364,7 +345,7 @@
 					<References Name="[dbo].[Address2Company]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -392,7 +373,7 @@
 					<References Name="[dbo].[Address2Employee]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -411,7 +392,7 @@
 					<References Name="[dbo].[Company]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -428,6 +409,25 @@
 			<Relationship Name="DefiningTable">
 				<Entry>
 					<References Name="[dbo].[Employee]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Address].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Address]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
@@ -450,7 +450,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="16" />
+						<AttachedAnnotation Disambiguator="21" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -488,7 +488,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Address].[ZIP]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Address].[Zip]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -550,7 +550,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="8" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -592,7 +592,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="5" />
+						<AttachedAnnotation Disambiguator="4" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -635,7 +635,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="18" />
+			<AttachedAnnotation Disambiguator="17" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Address2Employee]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -654,7 +654,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="6" />
+						<AttachedAnnotation Disambiguator="5" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -697,7 +697,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="19" />
+			<AttachedAnnotation Disambiguator="18" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Company]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -717,7 +717,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="20" />
+						<AttachedAnnotation Disambiguator="19" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -751,7 +751,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="7" />
+						<AttachedAnnotation Disambiguator="6" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -794,7 +794,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="17" />
+						<AttachedAnnotation Disambiguator="16" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -861,7 +861,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="4" />
+						<AttachedAnnotation Disambiguator="3" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -904,7 +904,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="21" />
+						<AttachedAnnotation Disambiguator="20" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1004,7 +1004,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="8" />
+						<AttachedAnnotation Disambiguator="7" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1028,6 +1028,233 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[spCreateOrUpdateAdress]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN 
+	declare @DBId int
+	Set @DBId = (select Id from Employee where Id = @Id)
+	
+	if(@DBId is null)
+	begin 
+
+		INSERT INTO [dbo].Address(
+									Country, 
+									City, 
+									Zip, 
+									Street
+									
+									)
+		VALUES (
+				@Country, 
+				@City, 
+				@Zip, 
+				@Street
+				)
+
+		Set @DBId = @@IDENTITY
+	end
+	else
+	begin
+
+		UPDATE [dbo].Address
+			SET [Country] = CASE WHEN @Country IS NULL THEN [Country] ELSE @Country END, 
+				[City] = CASE WHEN @City IS NULL THEN [City] ELSE @City END, 
+				[Zip] = CASE WHEN @Zip IS NULL THEN [Zip] ELSE @Zip END
+			WHERE Id = @Id
+	end
+	
+	Select @DBId
+	return @DBId
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Employee]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Employee].[Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address].[Country]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address].[City]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address].[Zip]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address].[Street]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@Country]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@City]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@Zip]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@Street]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@Country]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="128" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@City]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="128" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@Zip]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@Street]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@CompanyId]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@EmployeeId]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[spCreateOrUpdateAdress].[@Id]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[-1]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="881" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[spCreateOrUpdateAdress]&#xD;&#xA;&#x9;@Country nvarchar(128) = NULL,&#xD;&#xA;&#x9;@City nvarchar(128)= NULL,&#xD;&#xA;&#x9;@Zip int = NULL,&#xD;&#xA;&#x9;@Street int = NULL,&#xD;&#xA;&#x9;@CompanyId int = NULL,&#xD;&#xA;&#x9;@EmployeeId int = NULL,&#xD;&#xA;&#x9;@Id int = -1&#xD;&#xA;AS" />
+			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[spCreateOrUpdateCompany]">
 			<Property Name="BodyScript">
@@ -1530,7 +1757,7 @@ END]]></Value>
 					<Element Type="SqlComputedColumn" Name="[dbo].[viAddress].[ZIP]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
-								<References Name="[dbo].[Address].[ZIP]" />
+								<References Name="[dbo].[Address].[Zip]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1577,7 +1804,7 @@ END]]></Value>
 					<References Name="[dbo].[Address].[City]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Address].[ZIP]" />
+					<References Name="[dbo].[Address].[Zip]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Address].[Street]" />
@@ -1608,10 +1835,10 @@ END]]></Value>
 		<Element Type="SqlView" Name="[dbo].[viCompany]">
 			<Property Name="QueryScript">
 				<Value><![CDATA[ SELECT c.Id, c.Name, c.CreatedTime, c.DeletedTime, a.Country, a.City, a.ZIP, a.Street  FROM [Company] c
-		INNER JOIN Address2Company a2c
-		ON a2c.CompanyId = c.Id 
-INNER JOIN Address a
-		ON a2c.AddressId = a.Id
+		LEFT OUTER JOIN Address2Company a2c
+			ON a2c.CompanyId = c.Id 
+		LEFT OUTER JOIN Address a
+			ON a2c.AddressId = a.Id
 WHERE c.DeletedTime IS NULL]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1674,7 +1901,7 @@ WHERE c.DeletedTime IS NULL]]></Value>
 					<Element Type="SqlComputedColumn" Name="[dbo].[viCompany].[ZIP]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
-								<References Name="[dbo].[Address].[ZIP]" />
+								<References Name="[dbo].[Address].[Zip]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1730,7 +1957,7 @@ WHERE c.DeletedTime IS NULL]]></Value>
 					<References Name="[dbo].[Address].[City]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Address].[ZIP]" />
+					<References Name="[dbo].[Address].[Zip]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Address].[Street]" />
@@ -1742,7 +1969,7 @@ WHERE c.DeletedTime IS NULL]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="279" />
+				<Property Name="Length" Value="293" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[viCompany]&#xD;&#xA;&#x9;AS" />
@@ -1849,11 +2076,11 @@ WHERE d.DeletedTime IS NULL]]></Value>
 		</Element>
 		<Element Type="SqlView" Name="[dbo].[viEmployee]">
 			<Property Name="QueryScript">
-				<Value><![CDATA[ SELECT e.Id, e.FirstName, e.LastName, e.Birthday, e.DepartementId, e.CreatedTime, e.DeletedTime, a.Country, a.City, a.ZIP, a.Street FROM [Employee] e 
-		INNER JOIN Address2Employee a2e
-		ON a2e.Id = e.Id 
-INNER JOIN Address a
-		ON a2e.AddressId = a.Id
+				<Value><![CDATA[ SELECT e.Id, e.FirstName, e.LastName, e.Birthday, e.DepartementId, e.CreatedTime, a.Country, a.City, a.ZIP, a.Street FROM [Employee] e 
+		LEFT OUTER JOIN Address2Employee a2e
+			ON a2e.Id = e.Id 
+		LEFT OUTER JOIN Address a
+			ON a2e.AddressId = a.Id
 WHERE e.DeletedTime IS NULL]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1913,15 +2140,6 @@ WHERE e.DeletedTime IS NULL]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[viEmployee].[DeletedTime]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Employee].[DeletedTime]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
 					<Element Type="SqlComputedColumn" Name="[dbo].[viEmployee].[Country]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
@@ -1943,7 +2161,7 @@ WHERE e.DeletedTime IS NULL]]></Value>
 					<Element Type="SqlComputedColumn" Name="[dbo].[viEmployee].[ZIP]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
-								<References Name="[dbo].[Address].[ZIP]" />
+								<References Name="[dbo].[Address].[Zip]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1999,19 +2217,19 @@ WHERE e.DeletedTime IS NULL]]></Value>
 					<References Name="[dbo].[Employee].[CreatedTime]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employee].[DeletedTime]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[Address].[Country]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Address].[City]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Address].[ZIP]" />
+					<References Name="[dbo].[Address].[Zip]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Address].[Street]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Employee].[DeletedTime]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
@@ -2020,7 +2238,7 @@ WHERE e.DeletedTime IS NULL]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="321" />
+				<Property Name="Length" Value="320" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[viEmployee]&#xD;&#xA;&#x9;AS" />
