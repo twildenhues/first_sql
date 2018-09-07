@@ -60,6 +60,7 @@
     <Folder Include="view" />
     <Folder Include="table" />
     <Folder Include="StoredProcedures" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="view\viEmployee.sql" />
@@ -78,5 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Company.publish.xml" />
+    <None Include="Functions\DetermineGender.sql" />
   </ItemGroup>
 </Project>
