@@ -1,0 +1,20 @@
+﻿** Hervorhebungen
+     Tabellen, die neu erstellt werden.
+       Kein
+     Gruppierte Indizes, die gelöscht werden.
+       Kein
+     Gruppierte Indizes, die erstellt werden.
+       Kein
+     Mögliche Datenprobleme
+       Kein
+
+** Benutzeraktionen
+     Ändern
+       [dbo].[Employee] (Tabelle)
+       [dbo].[viEmployee] (Sicht)
+       [dbo].[viCompany] (Sicht)
+       [dbo].[spCreateOrUpdateEmployee] (Prozedur)
+       [dbo].[spCreateOrUpdateCompany] (Prozedur)
+       [dbo].[spCreateOrUpdateDepartement] (Prozedur)
+
+** Unterstützende Aktionen
