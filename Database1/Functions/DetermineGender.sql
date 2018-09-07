@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION dbo.determine_gender(@genderAsInt int)    
+﻿ALTER FUNCTION dbo.determine_gender(@genderAsInt int)    
 	RETURNS nvarchar(64)    
 	AS 
     BEGIN   

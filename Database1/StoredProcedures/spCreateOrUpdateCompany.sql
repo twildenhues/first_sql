@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[spCreateOrUpdateCompany]
-	@Name nvarchar(128),
+	@Name nvarchar(128) = NULL,
 	@Id int = -1
 AS
 BEGIN 
@@ -8,20 +8,23 @@ BEGIN
 	Set @DBId = (select Id from Company where Id = @Id)
 	
 	if(@DBId is null)
-	begin 
+	BEGIN 
 
-		INSERT INTO [dbo].Company (Name, CreatedTime)
+		INSERT INTO [dbo].Company	(
+									Name, 
+									CreatedTime
+									)
 		VALUES (@Name, GETDATE())
 
 		Set @DBId = @@IDENTITY
-	end
-	else
-	begin
+	END
+	ELSE
+	BEGIN
 
 		UPDATE [dbo].Company
-			SET [Name] = @Name
+			SET [Name] = CASE WHEN @Name IS NULL THEN [Name] ELSE @Name END
 			WHERE Id = @Id
-	end
+	END
 	
 	Select @DBId
 	return @DBId
