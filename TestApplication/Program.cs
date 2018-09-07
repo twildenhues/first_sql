@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Data;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlTest_CSharp
 {
@@ -12,9 +7,6 @@ namespace SqlTest_CSharp
 	{
 		static void Main(string[] args)
 		{
-			// Create the connection to the resource!
-			// This is the connection, that is established and
-			// will be available throughout this block.
 			using (SqlConnection conn = new SqlConnection())
 			{
 
@@ -29,13 +21,13 @@ namespace SqlTest_CSharp
 					while (reader.Read())
 					{
 						Console.WriteLine(String.Format("{0} \t | {1} \t | {2} \t | {3} \t | {4} \t | {5} \t | {6} \t |",
-							reader[0], reader[1], reader[2], reader[3], reader[4], reader[5], reader[6]));
+							reader[0].ToString().PadLeft(5,' '), reader[1], reader[2], reader[3], reader[4], reader[5], reader[6]));
 					}
 				}
-				SqlCommand viewDepartement = new SqlCommand("SELECT * FROM viDepartement", conn);
 
 				Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
 
+				SqlCommand viewDepartement = new SqlCommand("SELECT * FROM viDepartement", conn);
 				using (SqlDataReader reader = viewDepartement.ExecuteReader())
 				{
 					Console.WriteLine("Id\t\tCompanyId\t\tManagerId\t\tDepartementName\t\tCreatedTime\t");
@@ -45,16 +37,16 @@ namespace SqlTest_CSharp
 							reader[0], reader[1], reader[2], reader[3], reader[4]));
 					}
 				}
-				SqlCommand viewEmployee = new SqlCommand("SELECT * FROM viEmployee", conn);
 
 				Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
 
+				SqlCommand viewEmployee = new SqlCommand("SELECT * FROM viEmployee", conn);
 				using (SqlDataReader reader = viewEmployee.ExecuteReader())
 				{
 					Console.WriteLine("Id\t\tFirst Name\t\tLast Name\t\tBirthday\t\tDepartementId\t\tCreatedTime\t\tCountry\t\tCity\t\tZip\t\tStreet\t");
 					while (reader.Read())
 					{
-						Console.WriteLine(String.Format("{0} \t | {1} \t\t | {2} \t | {3} \t | {4} \t | {5} \t | {6} \t | {7} \t | {8} \t | {9} \t |",
+						Console.WriteLine(String.Format("{0} \t | {1} \t | {2} \t | {3} \t | {4} \t | {5} \t | {6} \t | {7} \t | {8} \t | {9} \t |",
 							reader[0], reader[1], reader[2], reader[3], reader[4], reader[5], reader[6], reader[7], reader[8], reader[9]));
 					}
 				}
