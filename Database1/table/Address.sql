@@ -5,7 +5,7 @@
 	[City] NVARCHAR (128) NOT NULL,
 	[Zip] INT NOT NULL,
 	[Street] NVARCHAR (128) NOT NULL,
-	[Number] INT NOT NULL,
+	[Number] INT ,
 	[CreatedTime] DATETIME NOT NULL default GETDATE(),
 	[DeletedTime] DATETIME
 )

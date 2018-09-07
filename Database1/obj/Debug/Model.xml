@@ -522,7 +522,6 @@
 				</Entry>
 				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[Address].[Number]">
-						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -1034,17 +1033,16 @@
 				<Value><![CDATA[
 BEGIN 
 	declare @DBId int
-	Set @DBId = (select Id from Employee where Id = @Id)
+	Set @DBId = (select Id from Address where Id = @Id)
 	
-	if(@DBId is null)
-	begin 
+	IF(@DBId is null)
+	BEGIN 
 
-		INSERT INTO [dbo].Address(
+		INSERT INTO [dbo].Address	(
 									Country, 
 									City, 
 									Zip, 
-									Street
-									
+									Street								
 									)
 		VALUES (
 				@Country, 
@@ -1054,19 +1052,43 @@ BEGIN
 				)
 
 		Set @DBId = @@IDENTITY
-	end
-	else
-	begin
+
+		IF (@CompanyId IS NULL) 
+			BEGIN
+			INSERT INTO [dbo].Address2Employee	(
+													AddressId,
+													Id
+												)
+										VALUES	(
+													@DBId,	
+													@EmployeeId
+		
+										)
+		END	
+		IF (@EmployeeId IS NULL) BEGIN
+			INSERT INTO [dbo].Address2Company	(
+													AddressId,
+													CompanyId
+												)
+										VALUES	(
+													@DBId,	
+													@CompanyId
+												)
+		END
+	END
+	ELSE
+	BEGIN
 
 		UPDATE [dbo].Address
 			SET [Country] = CASE WHEN @Country IS NULL THEN [Country] ELSE @Country END, 
 				[City] = CASE WHEN @City IS NULL THEN [City] ELSE @City END, 
-				[Zip] = CASE WHEN @Zip IS NULL THEN [Zip] ELSE @Zip END
+				[Zip] = CASE WHEN @Zip IS NULL THEN [Zip] ELSE @Zip END,
+				[Street] = CASE WHEN @Street IS NULL THEN [Street] ELSE @Street END
 			WHERE Id = @Id
-	end
+	END
 	
-	Select @DBId
-	return @DBId
+	SELECT @DBId
+	RETURN @DBId
 END]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1075,16 +1097,13 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[int]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employee]" />
+					<References Name="[dbo].[Address]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employee].[Id]" />
+					<References Name="[dbo].[Address].[Id]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[spCreateOrUpdateAdress].[@Id]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Address]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Address].[Country]" />
@@ -1109,6 +1128,30 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[spCreateOrUpdateAdress].[@Street]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@CompanyId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address2Employee]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address2Employee].[AddressId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address2Employee].[Id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[spCreateOrUpdateAdress].[@EmployeeId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address2Company]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address2Company].[AddressId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Address2Company].[CompanyId]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Address].[Id]" />
@@ -1179,9 +1222,10 @@ END]]></Value>
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="128" />
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
 										</Entry>
 									</Relationship>
 								</Element>
@@ -1250,10 +1294,10 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="881" />
+				<Property Name="Length" Value="1421" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[spCreateOrUpdateAdress]&#xD;&#xA;&#x9;@Country nvarchar(128) = NULL,&#xD;&#xA;&#x9;@City nvarchar(128)= NULL,&#xD;&#xA;&#x9;@Zip int = NULL,&#xD;&#xA;&#x9;@Street int = NULL,&#xD;&#xA;&#x9;@CompanyId int = NULL,&#xD;&#xA;&#x9;@EmployeeId int = NULL,&#xD;&#xA;&#x9;@Id int = -1&#xD;&#xA;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[spCreateOrUpdateAdress]&#xD;&#xA;&#x9;@Country nvarchar(128) = NULL,&#xD;&#xA;&#x9;@City nvarchar(128)= NULL,&#xD;&#xA;&#x9;@Zip int = NULL,&#xD;&#xA;&#x9;@Street nvarchar (128) = NULL,&#xD;&#xA;&#x9;@CompanyId int = NULL,&#xD;&#xA;&#x9;@EmployeeId int = NULL,&#xD;&#xA;&#x9;@Id int = -1&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[spCreateOrUpdateCompany]">
@@ -1721,7 +1765,7 @@ END]]></Value>
 		</Element>
 		<Element Type="SqlView" Name="[dbo].[viAddress]">
 			<Property Name="QueryScript">
-				<Value><![CDATA[ SELECT a.Id, a.Country, a.City, a.ZIP, a.Street, a.Number, a.CreatedTime FROM [Address] a
+				<Value><![CDATA[ SELECT a.Id, a.Country, a.City, a.Zip, a.Street, a.Number, a.CreatedTime FROM [Address] a
 		WHERE a.DeletedTime IS NULL]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1754,7 +1798,7 @@ END]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[viAddress].[ZIP]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[viAddress].[Zip]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Address].[Zip]" />
