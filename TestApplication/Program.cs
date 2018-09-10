@@ -20,8 +20,9 @@ namespace SqlTest_CSharp
 					Console.WriteLine("Id\t\tName\t\tCreatedTime\t\tCountry\t\tCity\t\tZip\t\tStreet\t");
 					while (reader.Read())
 					{
-						Console.WriteLine(String.Format("{0} \t | {1} \t | {2} \t | {3} \t | {4} \t | {5} \t | {6} \t |",
-							reader[0].ToString().PadLeft(5,' '), reader[1], reader[2], reader[3], reader[4], reader[5], reader[6]));
+						Console.WriteLine(String.Format("{0}| {1} \t | {2} \t | {3} \t | {4} \t | {5} \t | {6} \t |",
+							reader[0].ToString().PadLeft(5,' '), reader[1].ToString().PadLeft(10
+							, ' '), reader[2], reader[3], reader[4], reader[5], reader[6]));
 					}
 				}
 
@@ -53,7 +54,7 @@ namespace SqlTest_CSharp
 
 				Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
 
-				Console.WriteLine("Data displayed! Now press enter to move to the next section!");
+				Console.WriteLine("Data displayed! Now press enter to clear!");
 				Console.ReadLine();
 				Console.Clear();
 			}
