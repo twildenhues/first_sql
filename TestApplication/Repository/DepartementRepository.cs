@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Data;
 
 	class DepartementRepository
 	{
@@ -18,7 +19,7 @@ using System.Data.SqlClient;
 						test.CreatingOrUpdatingDepartement(conn); ;
 						break;
 					case '2':
-						test.ReadDepartement();
+						test.ReadDepartement(conn);
 						break;
 					case '3':
 						test.DeleteDepartement(); 
@@ -30,10 +31,24 @@ using System.Data.SqlClient;
 			}
 		}
 
-		private void ReadDepartement()
+		private void ReadDepartement(SqlConnection conn)
 		{
-			throw new NotImplementedException();
-		}
+			SqlCommand view = new SqlCommand("SELECT * FROM viDepartement", conn);
+			using (SqlDataAdapter a = new SqlDataAdapter(view))
+			{
+				DataTable dt = new DataTable();
+				a.Fill(dt);
+				Console.WriteLine(" ");
+				foreach (DataRow row in dt.Rows)
+				{
+					for (int i = 0; i < dt.Columns.Count; i++)
+					{
+						Console.Write(row[i].ToString() + "\t");
+					}
+					Console.WriteLine();
+				}
+			}
+	}
 
 		private void DeleteDepartement()
 		{

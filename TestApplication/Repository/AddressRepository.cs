@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace TestApplication.Repository
 {
@@ -20,10 +21,10 @@ namespace TestApplication.Repository
 						test.CreatingOrUpdatingAddress(conn); ;
 						break;
 					case '2':
-						test.ReadAddress(); ;
+						test.ReadAddress(conn); ;
 						break;
 					case '3':
-						test.ReadAddress();
+						test.DeleteAddress();
 						break;
 					default:
 						Console.WriteLine("Falsche Eingabe");
@@ -32,9 +33,23 @@ namespace TestApplication.Repository
 			}
 		}
 
-		private void ReadAddress()
+		private void ReadAddress(SqlConnection conn)
 		{
-			throw new NotImplementedException();
+			SqlCommand view = new SqlCommand("SELECT * FROM viAddress", conn);
+			using (SqlDataAdapter a = new SqlDataAdapter(view))
+			{
+				DataTable dt = new DataTable();
+				a.Fill(dt);
+				Console.WriteLine(" ");
+				foreach (DataRow row in dt.Rows)
+				{
+					for (int i = 0; i < dt.Columns.Count; i++)
+					{
+						Console.Write(row[i].ToString() + "\t");
+					}
+					Console.WriteLine();
+				}
+			}
 		}
 
 		private void DeleteAddress()

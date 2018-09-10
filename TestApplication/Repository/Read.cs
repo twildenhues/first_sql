@@ -46,8 +46,9 @@ class Read
 			{
 				for (int i = 0; i < reader.FieldCount; i++)
 				{
-					Console.WriteLine(reader[i].ToString());
+					Console.Write(reader[i].ToString());
 				}
+				console
 			}
 		}
 	}

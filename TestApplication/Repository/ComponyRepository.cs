@@ -1,42 +1,54 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Data;
 
-namespace TestApplication.Repository
+class ComponyRepository
 {
-	class DepartementRepository
-	{
 
-		static void Main(string[] args)
+	static void Main(string[] args)
+	{
+		ComponyRepository test = new ComponyRepository();
+		char key = Console.ReadKey().KeyChar;
+		using (SqlConnection conn = new SqlConnection())
 		{
-			DepartementRepository test = new DepartementRepository();
-			char key = Console.ReadKey().KeyChar;
-			using (SqlConnection conn = new SqlConnection())
+			conn.ConnectionString = "Data Source=tappqa;Initial Catalog=Training-TW-Company;Integrated Security=True";
+			conn.Open();
+			switch (key)
 			{
-				conn.ConnectionString = "Data Source=tappqa;Initial Catalog=Training-TW-Company;Integrated Security=True";
-				conn.Open();
-				switch (key)
-				{
-					case '1':
-						test.CreatingOrUpdatingCompany(conn); ;
-						break;
-					case '2':
-						test.ReadCompany(); ;
-						break;
-					case '3':
-						test.DeleteCompany();
-						break;
-					default:
-						Console.WriteLine("Falsche Eingabe");
-						break;
-				}
+				case '1':
+					test.CreatingOrUpdatingCompany(conn); ;
+					break;
+				case '2':
+					test.ReadCompany(conn);
+					break;
+				case '3':
+					test.DeleteCompany();
+					break;
+				default:
+					Console.WriteLine("Falsche Eingabe");
+					break;
 			}
 		}
+	}
 
-		private void ReadCompany()
+	private void ReadCompany(SqlConnection conn)
+	{
+		SqlCommand view = new SqlCommand("SELECT * FROM viCompany", conn);
+		using (SqlDataAdapter a = new SqlDataAdapter(view))
 		{
-			throw new NotImplementedException();
+			DataTable dt = new DataTable();
+			a.Fill(dt);
+			Console.WriteLine(" ");
+			foreach (DataRow row in dt.Rows)
+			{
+				for (int i = 0; i < dt.Columns.Count; i++)
+				{
+					Console.Write(row[i].ToString() + "\t");
+				}
+				Console.WriteLine();
+			}
 		}
-
+	}
 		private void DeleteCompany()
 		{
 			throw new NotImplementedException();
@@ -58,10 +70,10 @@ namespace TestApplication.Repository
 				Console.WriteLine(" ");
 				Console.WriteLine("Please enter the name of the Company:");
 				insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
+
 				Console.WriteLine("Data displayed! Now press enter to clear!");
 				Console.ReadLine();
 				Console.Clear();
 			}
 		}
 	}
-}
