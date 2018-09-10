@@ -15,16 +15,16 @@ BEGIN
 	BEGIN 
 
 		INSERT INTO [dbo].Address	(
-									Country, 
-									City, 
-									Zip, 
-									Street								
+										Country, 
+										City, 
+										Zip, 
+										Street								
 									)
 		VALUES (
-				@Country, 
-				@City, 
-				@Zip, 
-				@Street
+					@Country, 
+					@City, 
+					@Zip, 
+					@Street
 				)
 
 		Set @DBId = @@IDENTITY
