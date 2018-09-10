@@ -121,8 +121,10 @@ namespace TestApplication.Repository
 						break;
 					default: Console.WriteLine("Falsche Eingabe!");
 						break;
-				}
 
+
+				}
+				insertCommand.ExecuteNonQuery();
 				conn.Close();
 				Console.WriteLine("Finished! Now press enter to clear!");
 				Console.ReadLine();

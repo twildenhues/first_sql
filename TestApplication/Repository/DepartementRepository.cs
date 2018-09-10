@@ -93,6 +93,7 @@ using System.Data;
 					Int32.TryParse(temp, out id);
 					insertCommand.Parameters.AddWithValue("@CompanyId", (id == 0) ? -1 : id);
 
+			insertCommand.ExecuteNonQuery();
 			conn.Close();
 			Console.WriteLine("Finished! Now press enter to clear!");
 			Console.ReadLine();

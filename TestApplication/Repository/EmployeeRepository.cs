@@ -112,6 +112,7 @@ namespace TestApplication.Repository
 						insertCommand.Parameters.AddWithValue("@DepartementId", (dIdAsInt == 0) ? -1 : dIdAsInt);
 			}
 
+			insertCommand.ExecuteNonQuery();
 			conn.Close();
 			Console.WriteLine("Finished! Now press enter to clear!");
 			Console.ReadLine();
