@@ -15,14 +15,16 @@ using System.Data.SqlClient;
 				switch (key)
 				{
 					case '1':
-						test.CreatingOrUpdatingDepartement(); ;
+						test.CreatingOrUpdatingDepartement(conn); ;
 						break;
 					case '2':
-						test.ReadDepartement(); ;
+						test.ReadDepartement();
 						break;
-
+					case '3':
+						test.DeleteDepartement(); 
+						break;
 					default:
-						test.DeleteDepartement(); ;
+						Console.WriteLine("Falsche Eingabe"); 
 						break;
 				}
 			}
@@ -38,10 +40,30 @@ using System.Data.SqlClient;
 			throw new NotImplementedException();
 		}
 
-		void CreatingOrUpdatingDepartement()
+	void CreatingOrUpdatingDepartement(SqlConnection conn)
+	{
+		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
 		{
+			insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
+			Console.WriteLine(" ");
+				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Departement. Else just press enter to generate a new Departement:");
+					string tempDepartement = Console.ReadLine();
+					int DepartementId;
+					Int32.TryParse(tempDepartement, out DepartementId);
+					insertCommand.Parameters.AddWithValue("@Id", (DepartementId == 0) ? -1 : DepartementId);
+			Console.WriteLine(" ");
+				Console.WriteLine("Please enter the name of the Departement:");
+					insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
+			Console.WriteLine(" ");
+				Console.WriteLine("Please enter the Id of the Company this Departement belongs to. If you want to do it later, press enter:");
+					string temp = Console.ReadLine();
+					int id;
+					Int32.TryParse(temp, out id);
+					insertCommand.Parameters.AddWithValue("@CompanyId", (id == 0) ? -1 : id);
+
 			Console.WriteLine("Data displayed! Now press enter to clear!");
 			Console.ReadLine();
 			Console.Clear();
 		}
 	}
+}

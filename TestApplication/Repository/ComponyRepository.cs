@@ -14,37 +14,54 @@ namespace TestApplication.Repository
 			{
 				conn.ConnectionString = "Data Source=tappqa;Initial Catalog=Training-TW-Company;Integrated Security=True";
 				conn.Open();
-				switch (key) {
+				switch (key)
+				{
 					case '1':
-							test.CreatingOrUpdatingCompony(); ;
+						test.CreatingOrUpdatingCompany(conn); ;
 						break;
 					case '2':
-							test.ReadCompony(); ;
+						test.ReadCompany(); ;
 						break;
-
+					case '3':
+						test.DeleteCompany();
+						break;
 					default:
-							test.DeleteCompony(); ;
+						Console.WriteLine("Falsche Eingabe");
 						break;
 				}
 			}
 		}
 
-		private void ReadCompony()
+		private void ReadCompany()
 		{
 			throw new NotImplementedException();
 		}
 
-		private void DeleteCompony()
+		private void DeleteCompany()
 		{
 			throw new NotImplementedException();
 		}
 
-		void CreatingOrUpdatingCompony()
+		void CreatingOrUpdatingCompany(SqlConnection conn)
 		{
-			Console.WriteLine("Data displayed! Now press enter to clear!");
-			Console.ReadLine();
-			Console.Clear();
+
+			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
+			{
+				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+				Console.WriteLine(" ");
+				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Company. Else just press enter to generate a new Company");
+				string tempCompany = Console.ReadLine();
+				int CompanyId;
+				Int32.TryParse(tempCompany, out CompanyId);
+				insertCommand.Parameters.AddWithValue("@Id", (CompanyId == 0) ? -1 : CompanyId);
+				Console.WriteLine(" ");
+				Console.WriteLine("Please enter the name of the Company:");
+				insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
+				Console.WriteLine("Data displayed! Now press enter to clear!");
+				Console.ReadLine();
+				Console.Clear();
+			}
 		}
 	}
-
 }
