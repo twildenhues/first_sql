@@ -22,7 +22,7 @@ using System.Data;
 						test.ReadDepartement(conn);
 						break;
 					case '3':
-						test.DeleteDepartement(); 
+						test.DeleteDepartement(conn); 
 						break;
 					default:
 						Console.WriteLine("Falsche Eingabe"); 
@@ -46,14 +46,31 @@ using System.Data;
 						Console.Write(row[i].ToString() + "\t");
 					}
 					Console.WriteLine();
+					conn.Close();
 				}
 			}
 	}
 
-		private void DeleteDepartement()
+	private void DeleteDepartement(SqlConnection conn)
+	{
+		try
 		{
-			throw new NotImplementedException();
+			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
+			string tempDepartement = Console.ReadLine();
+			int DepartementId;
+			Int32.TryParse(tempDepartement, out DepartementId);
+			using (SqlCommand command = new SqlCommand("DELETE FROM Departement WHERE Departement.Id = '" + DepartementId + "'", conn))
+			{
+				command.ExecuteNonQuery();
+			}
+			conn.Close();
+
 		}
+		catch (SystemException ex)
+		{
+			Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
+		}
+	}
 
 	void CreatingOrUpdatingDepartement(SqlConnection conn)
 	{
@@ -76,7 +93,8 @@ using System.Data;
 					Int32.TryParse(temp, out id);
 					insertCommand.Parameters.AddWithValue("@CompanyId", (id == 0) ? -1 : id);
 
-			Console.WriteLine("Data displayed! Now press enter to clear!");
+			conn.Close();
+			Console.WriteLine("Finished! Now press enter to clear!");
 			Console.ReadLine();
 			Console.Clear();
 		}

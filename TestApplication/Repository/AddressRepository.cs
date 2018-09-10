@@ -24,7 +24,7 @@ namespace TestApplication.Repository
 						test.ReadAddress(conn); ;
 						break;
 					case '3':
-						test.DeleteAddress();
+						test.DeleteAddress(conn);
 						break;
 					default:
 						Console.WriteLine("Falsche Eingabe");
@@ -49,12 +49,29 @@ namespace TestApplication.Repository
 					}
 					Console.WriteLine();
 				}
+				conn.Close();
 			}
 		}
 
-		private void DeleteAddress()
+		private void DeleteAddress(SqlConnection conn)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				Console.WriteLine("Please insert the Id of the Address you want to delete:");
+				string tempAddress = Console.ReadLine();
+				int AddressId;
+				Int32.TryParse(tempAddress, out AddressId);
+				using (SqlCommand command = new SqlCommand("DELETE FROM Address WHERE Address.Id = '" + AddressId + "'", conn))
+				{
+					command.ExecuteNonQuery();
+				}
+				conn.Close();
+
+			}
+			catch (SystemException ex)
+			{
+				Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
+			}
 		}
 
 		void CreatingOrUpdatingAddress(SqlConnection conn)
@@ -105,9 +122,9 @@ namespace TestApplication.Repository
 					default: Console.WriteLine("Falsche Eingabe!");
 						break;
 				}
-							
 
-				Console.WriteLine("Data displayed! Now press enter to clear!");
+				conn.Close();
+				Console.WriteLine("Finished! Now press enter to clear!");
 				Console.ReadLine();
 				Console.Clear();
 			}

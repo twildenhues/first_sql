@@ -24,7 +24,7 @@ namespace TestApplication.Repository
 							test.ReadEmployee(conn); ;
 						break;
 					case '3':
-							test.DeleteEmployee();
+							test.DeleteEmployee(conn);
 						break;
 					default:
 						Console.WriteLine("Falsche Eingabe");
@@ -48,13 +48,30 @@ namespace TestApplication.Repository
 						Console.Write(row[i].ToString() + "\t");
 					}
 					Console.WriteLine();
+					conn.Close();
 				}
 			}
 		}
 
-		private void DeleteEmployee()
+		private void DeleteEmployee(SqlConnection conn)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				Console.WriteLine("Please insert the Id of the Employee you want to delete:");
+				string tempEmployee = Console.ReadLine();
+				int EmployeeId;
+				Int32.TryParse(tempEmployee, out EmployeeId);
+				using (SqlCommand command = new SqlCommand("DELETE FROM Employee WHERE Employee.Id = '" + EmployeeId + "'", conn))
+				{
+					command.ExecuteNonQuery();
+				}
+				conn.Close();
+
+			}
+			catch (SystemException ex)
+			{
+				Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
+			}
 		}
 
 		void CreatingOrUpdatingEmployee(SqlConnection conn)
@@ -95,7 +112,8 @@ namespace TestApplication.Repository
 						insertCommand.Parameters.AddWithValue("@DepartementId", (dIdAsInt == 0) ? -1 : dIdAsInt);
 			}
 
-			Console.WriteLine("Data displayed! Now press enter to clear!");
+			conn.Close();
+			Console.WriteLine("Finished! Now press enter to clear!");
 			Console.ReadLine();
 			Console.Clear();
 		}

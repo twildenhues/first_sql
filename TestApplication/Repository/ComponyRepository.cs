@@ -22,7 +22,7 @@ class ComponyRepository
 					test.ReadCompany(conn);
 					break;
 				case '3':
-					test.DeleteCompany();
+					test.DeleteCompany(conn);
 					break;
 				default:
 					Console.WriteLine("Falsche Eingabe");
@@ -47,13 +47,29 @@ class ComponyRepository
 				}
 				Console.WriteLine();
 			}
+			conn.Close();
 		}
 	}
-		private void DeleteCompany()
+		private void DeleteCompany(SqlConnection conn)
 		{
-			throw new NotImplementedException();
+			try
+			{
+			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
+				string tempCompany = Console.ReadLine();
+				int CompanyId;
+				Int32.TryParse(tempCompany, out CompanyId);
+			using (SqlCommand command = new SqlCommand("DELETE FROM Compony WHERE Compony.Id = '" + CompanyId + "'", conn))
+				{
+					command.ExecuteNonQuery();
+				}
+				conn.Close();
+				
+			}
+			catch (SystemException ex)
+			{
+				Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
+			}
 		}
-
 		void CreatingOrUpdatingCompany(SqlConnection conn)
 		{
 
@@ -62,16 +78,17 @@ class ComponyRepository
 				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
 				Console.WriteLine(" ");
-				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Company. Else just press enter to generate a new Company");
-				string tempCompany = Console.ReadLine();
-				int CompanyId;
-				Int32.TryParse(tempCompany, out CompanyId);
-				insertCommand.Parameters.AddWithValue("@Id", (CompanyId == 0) ? -1 : CompanyId);
+					Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Company. Else just press enter to generate a new Company");
+						string tempCompany = Console.ReadLine();
+						int CompanyId;
+						Int32.TryParse(tempCompany, out CompanyId);
+						insertCommand.Parameters.AddWithValue("@Id", (CompanyId == 0) ? -1 : CompanyId);
 				Console.WriteLine(" ");
-				Console.WriteLine("Please enter the name of the Company:");
-				insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
+					Console.WriteLine("Please enter the name of the Company:");
+						insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
 
-				Console.WriteLine("Data displayed! Now press enter to clear!");
+				conn.Close();
+				Console.WriteLine("Finished! Now press enter to clear!");
 				Console.ReadLine();
 				Console.Clear();
 			}
