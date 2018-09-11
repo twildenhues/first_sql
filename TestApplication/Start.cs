@@ -21,28 +21,42 @@ namespace TestApplication
 				switch(key){
 					case 'C':
 							Repository.CompanyRepository uCompany = new Repository.CompanyRepository();
+							Console.WriteLine(" ");
 						break;
 					case 'c':
-						Repository.CompanyRepository lCompany = new Repository.CompanyRepository();
+							Repository.CompanyRepository lCompany = new Repository.CompanyRepository();
+							Console.WriteLine(" ");
 						break;
 					case 'D':
-						Repository.DepartementRepository uDepartement = new Repository.DepartementRepository();
+							Repository.DepartementRepository uDepartement = new Repository.DepartementRepository();
+							Console.WriteLine(" ");
 						break;
 					case 'd':
-						Repository.DepartementRepository lDepartement = new Repository.DepartementRepository();
+							Repository.DepartementRepository lDepartement = new Repository.DepartementRepository();
+							Console.WriteLine(" ");
 						break;
 					case 'E':
 							Repository.EmployeeRepository uEmployee = new Repository.EmployeeRepository();
+							Console.WriteLine(" ");
 						break;
-					case 'e': Repository.EmployeeRepository lEmployee = new Repository.EmployeeRepository();
+					case 'e':
+							Repository.EmployeeRepository lEmployee = new Repository.EmployeeRepository();
+							Console.WriteLine(" ");
 						break;
-					case 'A': Repository.AddressRepository uAddress = new Repository.AddressRepository();
+					case 'A':
+							Repository.AddressRepository uAddress = new Repository.AddressRepository();
+							Console.WriteLine(" ");
 						break;
-					case 'a': Repository.AddressRepository lAddress = new Repository.AddressRepository();
+					case 'a':
+							Repository.AddressRepository lAddress = new Repository.AddressRepository();
+							Console.WriteLine(" ");
 						break;
-					case 'x': running = false;
+					case 'x':
+							running = false;
 						break;
-					default: ;
+					default:
+							Console.WriteLine(" ");
+							Console.WriteLine("Falsche Eingabe");
 						break;
 
 				}
