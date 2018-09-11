@@ -10,64 +10,73 @@ namespace TestApplication
 			application.Run();
 		}
 		private void Run() {
+			Repository.CompanyRepository Company = new Repository.CompanyRepository();
+			/*Repository.DepartementRepository Departement = new Repository.DepartementRepository();
+				Departement.Run();
+			Repository.EmployeeRepository Employee = new Repository.EmployeeRepository();
+				Employee.Run();
+			Repository.AddressRepository Address = new Repository.AddressRepository();
+				Address.Run();*/
 			bool running = true;
 			Intro();
 			while (running) {
 				char key = Console.ReadKey().KeyChar;
 				switch(key){
 					case 'C':
-							Repository.CompanyRepository uCompany = new Repository.CompanyRepository();
-							Console.WriteLine(" ");
-							uCompany.Run();
-							Console.Clear();
-							Intro();
-						break;
 					case 'c':
-							Repository.CompanyRepository lCompany = new Repository.CompanyRepository();
 							Console.WriteLine(" ");
-							lCompany.Run();
+								Console.WriteLine("press '1' to add or update a Company");
+								Console.WriteLine("press '2' to see all current Companys");
+								Console.WriteLine("press '3' to delete a Company");
+									char innerKey = Console.ReadKey().KeyChar;
+										switch (innerKey)
+										{
+											case '1':
+												Console.WriteLine(" ");
+												Company.CreatingOrUpdatingCompany(); ;
+												break;
+											case '2':
+												Console.WriteLine(" ");
+												DataTable dt = Company.ReadCompany();
+												foreach (DataRow row in dt.Rows)
+												{
+													for (int i = 0; i < dt.Columns.Count; i++)
+													{
+														Console.Write(("   " + row[i].ToString()).PadRight(25, ' '));
+													}
+													Console.WriteLine();
+												}
+												Console.WriteLine(" ");
+												Console.WriteLine("Finished! Now press enter to clear!");
+												Console.ReadLine();
+												Console.Clear();
+												break;
+											case '3':
+							
+												break;
+											default:
+													Console.WriteLine(" ");
+													Console.WriteLine("Falsche Eingabe");
+												break;
+										}
 							Console.Clear();
 							Intro();
 						break;
 					case 'D':
-							Repository.DepartementRepository uDepartement = new Repository.DepartementRepository();
-							Console.WriteLine(" ");
-							uDepartement.Run();
-							Console.Clear();
-							Intro();
-						break;
 					case 'd':
-							Repository.DepartementRepository lDepartement = new Repository.DepartementRepository();
 							Console.WriteLine(" ");
-							lDepartement.Run();
 							Console.Clear();
 							Intro();
 						break;
 					case 'E':
-							Repository.EmployeeRepository uEmployee = new Repository.EmployeeRepository();
-							Console.WriteLine(" ");
-							uEmployee.Run();
-							Console.Clear();
-							Intro();
-						break;
 					case 'e':
-							Repository.EmployeeRepository lEmployee = new Repository.EmployeeRepository();
 							Console.WriteLine(" ");
-							lEmployee.Run();
 							Console.Clear();
 							Intro();
 						break;
 					case 'A':
-							Repository.AddressRepository uAddress = new Repository.AddressRepository();
-							Console.WriteLine(" ");
-							uAddress.Run();
-							Console.Clear();
-							Intro();
-						break;
 					case 'a':
-							Repository.AddressRepository lAddress = new Repository.AddressRepository();
 							Console.WriteLine(" ");
-							lAddress.Run();
 							Console.Clear();
 							Intro();
 						break;

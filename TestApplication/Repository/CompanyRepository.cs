@@ -6,41 +6,16 @@ namespace TestApplication.Repository
 {
 	class CompanyRepository
 	{
-
-		public void Run()
-		{
-			CompanyRepository test = new CompanyRepository();
-			Console.WriteLine("press '1' to add or update a Company");
-			Console.WriteLine("press '2' to see all current Companys");
-			Console.WriteLine("press '3' to delete a Company");
-			char key = Console.ReadKey().KeyChar;
-			using (SqlConnection conn = new SqlConnection())
+		private SqlConnection conn = new SqlConnection();
+		public CompanyRepository() {
+			using (conn)
 			{
 				conn.ConnectionString = "Data Source=tappqa;Initial Catalog=Training-TW-Company;Integrated Security=True";
 				conn.Open();
-				switch (key)
-				{
-					case '1':
-						Console.WriteLine(" ");
-						test.CreatingOrUpdatingCompany(conn); ;
-						break;
-					case '2':
-						Console.WriteLine(" ");
-						test.ReadCompany(conn);
-						break;
-					case '3':
-						Console.WriteLine(" ");
-						test.DeleteCompany(conn);
-						break;
-					default:
-						Console.WriteLine(" ");
-						Console.WriteLine("Falsche Eingabe");
-						break;
-				}
 			}
 		}
 
-		private void ReadCompany(SqlConnection conn)
+		public DataTable ReadCompany()
 		{
 			SqlCommand view = new SqlCommand("SELECT * FROM viCompany", conn);
 			Console.WriteLine(("   Id").PadRight(25, ' ') + ("   Name").PadRight(25, ' ') + ("   CreatedTimed").PadRight(25, ' ') + ("   Country").PadRight(25, ' ') + ("   City").PadRight(25, ' ') + ("   Zip").PadRight(25, ' ') + ("   Street").PadRight(25, ' ') + ("   Departement").PadRight(25, ' '));
@@ -48,22 +23,10 @@ namespace TestApplication.Repository
 			{
 				DataTable dt = new DataTable();
 				a.Fill(dt);
-				Console.WriteLine(" ");
-				foreach (DataRow row in dt.Rows)
-				{
-					for (int i = 0; i < dt.Columns.Count; i++)
-					{
-						Console.Write(("   " + row[i].ToString()).PadRight(25, ' '));
-					}
-					Console.WriteLine();
-				}
-				conn.Close();
-				Console.WriteLine("Finished! Now press enter to clear!");
-				Console.ReadLine();
-				Console.Clear();
+				return dt;
 			}
 		}
-		private void DeleteCompany(SqlConnection conn)
+		public void DeleteCompany()
 		{
 			try
 			{
@@ -77,7 +40,6 @@ namespace TestApplication.Repository
 				}
 				Console.WriteLine("successfully deleted! Press enter to go to the menu ");
 				Console.ReadLine();
-				conn.Close();
 
 			}
 			catch (SystemException ex)
@@ -85,7 +47,7 @@ namespace TestApplication.Repository
 				Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
 			}
 		}
-		void CreatingOrUpdatingCompany(SqlConnection conn)
+		public void CreatingOrUpdatingCompany()
 		{
 
 			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
@@ -101,7 +63,6 @@ namespace TestApplication.Repository
 				insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
 				insertCommand.ExecuteNonQuery();
 			}
-			conn.Close();
 			Console.WriteLine("Finished! Now press enter to clear!");
 			Console.ReadLine();
 			Console.Clear();
