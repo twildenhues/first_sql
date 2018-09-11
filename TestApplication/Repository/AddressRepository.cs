@@ -63,12 +63,14 @@ namespace TestApplication.Repository
 		{
 			try
 			{
+				Console.WriteLine(" ");
 				Console.WriteLine("Please insert the Id of the Address you want to delete:");
 				string tempAddress = Console.ReadLine();
 				int AddressId;
 				Int32.TryParse(tempAddress, out AddressId);
 				using (SqlCommand command = new SqlCommand("DELETE FROM Address WHERE Address.Id = '" + AddressId + "'", conn))
 				{
+					Console.WriteLine("successfully deleted ");
 					command.ExecuteNonQuery();
 				}
 				conn.Close();
@@ -82,12 +84,12 @@ namespace TestApplication.Repository
 
 		void CreatingOrUpdatingAddress(SqlConnection conn)
 		{
-			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
+			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateAddress", conn))
 			{
 				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
 				Console.WriteLine(" ");
-					Console.WriteLine("Enter the Id of the an existingAddress if you want to change something, and just press enter to generate a new Address:");
+					Console.WriteLine("Enter the Id of the an existing Address if you want to change something, and just press enter to generate a new Address:");
 						string tempAddress = Console.ReadLine();
 						int AddressId;
 						Int32.TryParse(tempAddress, out AddressId);
@@ -106,24 +108,24 @@ namespace TestApplication.Repository
 						insertCommand.Parameters.AddWithValue("@Zip", (Zip == 0) ? -1 : Zip);
 				Console.WriteLine(" ");
 					Console.WriteLine("Does this Address belongs to an Employee or a Company ? ");
-					Console.WriteLine("enter 'E' for Employee and 'C' for Company");
+					Console.WriteLine("enter 'e' for Employee and 'c' for Company");
 				var input = Console.ReadKey().KeyChar;
 				switch (input) {
-					case 'E':
+					case 'e':
+						Console.WriteLine(" ");
 							Console.WriteLine("Enter the Id of the Employee:");
-							string EmployeeId = Console.ReadLine();
-							int Employee;
-							Int32.TryParse(EmployeeId, out Employee);
-							insertCommand.Parameters.AddWithValue("@EmployeeId", (Employee == 0) ? -1 : Employee);
-							;
+								string EmployeeId = Console.ReadLine();
+								int Employee;
+								Int32.TryParse(EmployeeId, out Employee);
+								insertCommand.Parameters.AddWithValue("@EmployeeId", (Employee == 0) ? -1 : Employee);
 						break;
-					case 'C':
+					case 'c':
+						Console.WriteLine(" ");
 							Console.WriteLine("Enter the Id the Company:");
-							string CompanyId = Console.ReadLine();
-							int Company;
-							Int32.TryParse(CompanyId, out Company);
-							insertCommand.Parameters.AddWithValue("@CompanyId", (Company == 0) ? -1 : Company);
-							;
+								string CompanyId = Console.ReadLine();
+								int Company;
+								Int32.TryParse(CompanyId, out Company);
+								insertCommand.Parameters.AddWithValue("@CompanyId", (Company == 0) ? -1 : Company);
 						break;
 					default:
 							Console.WriteLine("Falsche Eingabe!");

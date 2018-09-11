@@ -62,12 +62,14 @@ using System.Data;
 	{
 		try
 		{
+			Console.WriteLine(" ");
 			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
 			string tempDepartement = Console.ReadLine();
 			int DepartementId;
 			Int32.TryParse(tempDepartement, out DepartementId);
 			using (SqlCommand command = new SqlCommand("DELETE FROM Departement WHERE Departement.Id = '" + DepartementId + "'", conn))
 			{
+				Console.WriteLine("successfully deleted ");
 				command.ExecuteNonQuery();
 			}
 			conn.Close();
@@ -81,9 +83,9 @@ using System.Data;
 
 	void CreatingOrUpdatingDepartement(SqlConnection conn)
 	{
-		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
+		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateDepartement", conn))
 		{
-			insertCommand.CommandType = CommandType.StoredProcedure;
+			insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
 			Console.WriteLine(" ");
 				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Departement. Else just press enter to generate a new Departement:");
 					string tempDepartement = Console.ReadLine();

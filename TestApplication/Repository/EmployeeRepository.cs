@@ -63,12 +63,14 @@ namespace TestApplication.Repository
 		{
 			try
 			{
+				Console.WriteLine(" ");
 				Console.WriteLine("Please insert the Id of the Employee you want to delete:");
 				string tempEmployee = Console.ReadLine();
 				int EmployeeId;
 				Int32.TryParse(tempEmployee, out EmployeeId);
 				using (SqlCommand command = new SqlCommand("DELETE FROM Employee WHERE Employee.Id = '" + EmployeeId + "'", conn))
 				{
+					Console.WriteLine("successfully deleted ");
 					command.ExecuteNonQuery();
 				}
 				conn.Close();
@@ -82,7 +84,7 @@ namespace TestApplication.Repository
 
 		void CreatingOrUpdatingEmployee(SqlConnection conn)
 		{
-			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
+			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateEmployee", conn))
 			{
 				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
 

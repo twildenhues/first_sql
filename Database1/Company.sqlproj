@@ -75,7 +75,7 @@
     <Build Include="table\Address2Company.sql" />
     <Build Include="table\Address2Employee.sql" />
     <Build Include="StoredProcedures\spCreateOrUpdateDepartement.sql" />
-    <Build Include="StoredProcedures\spCreateOrUpdateEmployee_1.sql" />
+    <Build Include="StoredProcedures\spCreateOrUpdateEmployee.sql" />
     <None Include="Functions\DetermineGender.sql" />
     <Build Include="StoredProcedures\spCreateOrUpdateAddress.sql" />
   </ItemGroup>

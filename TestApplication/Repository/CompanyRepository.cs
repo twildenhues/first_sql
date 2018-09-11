@@ -37,6 +37,8 @@ class CompanyRepository
 	private void ReadCompany(SqlConnection conn)
 	{
 		SqlCommand view = new SqlCommand("SELECT * FROM viCompany", conn);
+		Console.WriteLine(" ");
+		Console.WriteLine(("   Id").PadRight(20, ' ')+("   Name").PadRight(20, ' ')+("   CreatedTimed").PadRight(20, ' ')+("   Country").PadRight(20, ' ')+("   City").PadRight(20, ' ')+("   Zip").PadRight(20, ' ')+("   Street").PadRight(20, ' ')+ ("   Departement").PadRight(20, ' '));
 		using (SqlDataAdapter a = new SqlDataAdapter(view))
 		{
 			DataTable dt = new DataTable();
@@ -46,7 +48,7 @@ class CompanyRepository
 			{
 				for (int i = 0; i < dt.Columns.Count; i++)
 				{
-					Console.Write(row[i].ToString() + "\t");
+					Console.Write(("   " +row[i].ToString()).PadRight(20, ' '));
 				}
 				Console.WriteLine();
 			}
@@ -60,12 +62,14 @@ class CompanyRepository
 	{
 		try
 		{
-		Console.WriteLine("Please insert the Id of the Compony you want to delete:");
+			Console.WriteLine(" ");
+			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
 			string tempCompany = Console.ReadLine();
 			int CompanyId;
 			Int32.TryParse(tempCompany, out CompanyId);
-		using (SqlCommand command = new SqlCommand("DELETE FROM Compony WHERE Company.Id = '" + CompanyId + "'", conn))
+		using (SqlCommand command = new SqlCommand("DELETE FROM Company WHERE Company.Id = '" + CompanyId + "'", conn))
 			{
+				Console.WriteLine("successfully deleted ");
 				command.ExecuteNonQuery();
 			}
 			conn.Close();
@@ -92,7 +96,7 @@ class CompanyRepository
 			Console.WriteLine(" ");
 				Console.WriteLine("Please enter the name of the Company:");
 					insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
-		insertCommand.ExecuteNonQuery();
+			insertCommand.ExecuteNonQuery();
 		}
 	conn.Close();
 	Console.WriteLine("Finished! Now press enter to clear!");
