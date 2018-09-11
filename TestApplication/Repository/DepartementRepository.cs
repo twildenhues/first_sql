@@ -7,7 +7,7 @@ namespace TestApplication.Repository
 	class DepartementRepository
 	{
 
-		static void Main(string[] args)
+		public void Run()
 		{
 			DepartementRepository test = new DepartementRepository();
 			Console.WriteLine("press '1' to add or update a Departement");

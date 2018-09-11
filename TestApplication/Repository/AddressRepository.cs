@@ -7,7 +7,7 @@ namespace TestApplication.Repository
 	class AddressRepository
 	{
 
-		static void Main(string[] args)
+		public void Run()
 		{
 			AddressRepository test = new AddressRepository();
 			Console.WriteLine("press '1' to add or update a Address");

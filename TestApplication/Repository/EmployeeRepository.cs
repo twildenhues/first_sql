@@ -6,8 +6,7 @@ namespace TestApplication.Repository
 {
 	class EmployeeRepository
 	{
-
-		static void Main(string[] args)
+		public void Run()
 		{
 			EmployeeRepository test = new EmployeeRepository();
 			Console.WriteLine("press '1' to add or update an Employee");

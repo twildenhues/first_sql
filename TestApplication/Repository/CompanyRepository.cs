@@ -7,7 +7,7 @@ namespace TestApplication.Repository
 	class CompanyRepository
 	{
 
-		static void Main(string[] args)
+		public void Run()
 		{
 			CompanyRepository test = new CompanyRepository();
 			Console.WriteLine("press '1' to add or update a Company");
