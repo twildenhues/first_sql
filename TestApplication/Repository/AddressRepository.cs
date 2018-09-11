@@ -74,9 +74,10 @@ namespace TestApplication.Repository
 				Int32.TryParse(tempAddress, out AddressId);
 				using (SqlCommand command = new SqlCommand("DELETE FROM Address WHERE Address.Id = '" + AddressId + "'", conn))
 				{
-					Console.WriteLine("successfully deleted ");
 					command.ExecuteNonQuery();
 				}
+				Console.WriteLine("successfully deleted! Press enter to go to the menu ");
+				Console.ReadLine();
 				conn.Close();
 
 			}

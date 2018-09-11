@@ -74,9 +74,10 @@ namespace TestApplication.Repository
 				Int32.TryParse(tempEmployee, out EmployeeId);
 				using (SqlCommand command = new SqlCommand("DELETE FROM Employee WHERE Employee.Id = '" + EmployeeId + "'", conn))
 				{
-					Console.WriteLine("successfully deleted ");
 					command.ExecuteNonQuery();
 				}
+				Console.WriteLine("successfully deleted! Press enter to go to the menu ");
+				Console.ReadLine();
 				conn.Close();
 
 			}

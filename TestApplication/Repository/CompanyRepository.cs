@@ -73,9 +73,10 @@ namespace TestApplication.Repository
 				Int32.TryParse(tempCompany, out CompanyId);
 				using (SqlCommand command = new SqlCommand("DELETE FROM Company WHERE Company.Id = '" + CompanyId + "'", conn))
 				{
-					Console.WriteLine("successfully deleted ");
 					command.ExecuteNonQuery();
 				}
+				Console.WriteLine("successfully deleted! Press enter to go to the menu ");
+				Console.ReadLine();
 				conn.Close();
 
 			}

@@ -75,9 +75,10 @@ namespace TestApplication.Repository
 				Int32.TryParse(tempDepartement, out DepartementId);
 				using (SqlCommand command = new SqlCommand("DELETE FROM Departement WHERE Departement.Id = '" + DepartementId + "'", conn))
 				{
-					Console.WriteLine("successfully deleted ");
 					command.ExecuteNonQuery();
 				}
+				Console.WriteLine("successfully deleted! Press enter to go to the menu ");
+				Console.ReadLine();
 				conn.Close();
 
 			}
@@ -108,7 +109,10 @@ namespace TestApplication.Repository
 				insertCommand.Parameters.AddWithValue("@CompanyId", (id == 0) ? -1 : id);
 				Console.WriteLine(" ");
 				Console.WriteLine("Please enter the PersonId that belongs to the Manager in this Apartement. You can skip this by pressing enter:");
-				insertCommand.Parameters.Add("@ManagerId", SqlDbType.NVarChar).Value = Console.ReadLine();
+				string tempManager = Console.ReadLine();
+				int ManagaerId;
+				Int32.TryParse(tempManager, out ManagaerId);
+				insertCommand.Parameters.AddWithValue("@ManagerId", (ManagaerId == 0) ? -1 : ManagaerId);
 
 				insertCommand.ExecuteNonQuery();
 			}

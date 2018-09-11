@@ -22,7 +22,7 @@ BEGIN
 				@Name, 
 				@CompanyId, 
 				GETDATE(),
-				@ManagerId
+				CASE WHEN @ManagerId = -1 THEN NULL ELSE @ManagerId END
 				)
 
 		SET @DBId = @@IDENTITY
