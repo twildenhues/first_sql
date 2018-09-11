@@ -1,7 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[spCreateOrUpdateDepartement]
 	@Name nvarchar(128) = NULL,
 	@Id int = -1 ,
-	@CompanyId int = NULL 
+	@CompanyId int = NULL,
+	@ManagerId int = null
 AS
 BEGIN 
 
@@ -14,12 +15,14 @@ BEGIN
 		INSERT INTO [dbo].Departement(
 									DepartementName, 
 									CompanyId, 
-									CreatedTime
+									CreatedTime,
+									ManagerId
 									)
 		VALUES (
 				@Name, 
 				@CompanyId, 
-				GETDATE()
+				GETDATE(),
+				@ManagerId
 				)
 
 		SET @DBId = @@IDENTITY
@@ -29,7 +32,8 @@ BEGIN
 
 		UPDATE [dbo].Departement
 			SET [DepartementName] = CASE WHEN @Name IS NULL THEN [DepartementName] ELSE @Name END, 
-				[CompanyId] =  CASE WHEN @CompanyId IS NULL THEN [CompanyId] ELSE @CompanyId END
+				[CompanyId] =  CASE WHEN @CompanyId IS NULL THEN [CompanyId] ELSE @CompanyId END,
+				[ManagerId] = CASE WHEN @ManagerId IS NULL THEN [ManagerId] ELSE @ManagerId END
 			WHERE Id = @Id
 	end
 	
