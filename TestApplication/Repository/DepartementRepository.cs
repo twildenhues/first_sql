@@ -19,15 +19,19 @@ using System.Data;
 			switch (key)
 				{
 					case '1':
-							test.CreatingOrUpdatingDepartement(conn); ;
+							Console.WriteLine(" ");
+							test.CreatingOrUpdatingDepartement(conn); 
 						break;
 					case '2':
+							Console.WriteLine(" ");
 							test.ReadDepartement(conn);
 						break;
 					case '3':
+							Console.WriteLine(" ");
 							test.DeleteDepartement(conn); 
 						break;
 					default:
+							Console.WriteLine(" ");
 							Console.WriteLine("Falsche Eingabe"); 
 						break;
 				}
@@ -36,7 +40,7 @@ using System.Data;
 
 		private void ReadDepartement(SqlConnection conn)
 		{
-		Console.WriteLine(("   Id").PadRight(25, ' ')+("   CompanyId").PadRight(25, ' ')+("   DepartementName").PadRight(25, ' ')+("   ManagerId").PadRight(25, ' ')+("   CreatedTime").PadRight(25, ' '));
+		Console.WriteLine(("   Id").PadRight(25, ' ')+("   CompanyId").PadRight(25, ' ')+("   ManagerId").PadRight(25, ' ')+("   DepartementName").PadRight(25, ' ')+("   CreatedTime").PadRight(25, ' ')+("   First Name").PadRight(25, ' ')+("   Last Name").PadRight(25, ' ')+("   Gender").PadRight(25, ' '));
 			SqlCommand view = new SqlCommand("SELECT * FROM viDepartement", conn);
 			using (SqlDataAdapter a = new SqlDataAdapter(view))
 			{
@@ -63,7 +67,6 @@ using System.Data;
 	{
 		try
 		{
-			Console.WriteLine(" ");
 			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
 			string tempDepartement = Console.ReadLine();
 			int DepartementId;
@@ -87,7 +90,6 @@ using System.Data;
 		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateDepartement", conn))
 		{
 			insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-			Console.WriteLine(" ");
 				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Departement. Else just press enter to generate a new Departement:");
 					string tempDepartement = Console.ReadLine();
 					int DepartementId;

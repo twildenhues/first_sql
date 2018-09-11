@@ -21,16 +21,20 @@ namespace TestApplication.Repository
 				switch (key)
 				{
 					case '1':
+							Console.WriteLine(" ");
 							test.CreatingOrUpdatingEmployee(conn); ;
 						break;
 					case '2':
+							Console.WriteLine(" ");
 							test.ReadEmployee(conn); ;
 						break;
 					case '3':
+							Console.WriteLine(" ");
 							test.DeleteEmployee(conn);
 						break;
 					default:
-						Console.WriteLine("Falsche Eingabe");
+							Console.WriteLine(" ");
+							Console.WriteLine("Falsche Eingabe");
 						break;
 				}	
 			}
@@ -65,7 +69,6 @@ namespace TestApplication.Repository
 		{
 			try
 			{
-				Console.WriteLine(" ");
 				Console.WriteLine("Please insert the Id of the Employee you want to delete:");
 				string tempEmployee = Console.ReadLine();
 				int EmployeeId;
@@ -89,8 +92,6 @@ namespace TestApplication.Repository
 			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateEmployee", conn))
 			{
 				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-				Console.WriteLine(" ");
 					Console.WriteLine("Enter the Id of the an existing person if you want to change something, and only press enter to generate a new person:");
 						string tempEmployee = Console.ReadLine();
 						int EmployeeId;

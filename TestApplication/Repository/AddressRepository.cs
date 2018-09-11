@@ -21,15 +21,19 @@ namespace TestApplication.Repository
 				switch (key)
 				{
 					case '1':
+							Console.WriteLine(" ");
 							test.CreatingOrUpdatingAddress(conn); ;
 						break;
 					case '2':
+							Console.WriteLine(" ");
 							test.ReadAddress(conn); ;
 						break;
 					case '3':
+							Console.WriteLine(" ");
 							test.DeleteAddress(conn);
 						break;
 					default:
+							Console.WriteLine(" ");
 							Console.WriteLine("Falsche Eingabe");
 						break;
 				}
@@ -64,7 +68,6 @@ namespace TestApplication.Repository
 		{
 			try
 			{
-				Console.WriteLine(" ");
 				Console.WriteLine("Please insert the Id of the Address you want to delete:");
 				string tempAddress = Console.ReadLine();
 				int AddressId;
@@ -88,8 +91,6 @@ namespace TestApplication.Repository
 			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateAddress", conn))
 			{
 				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-				Console.WriteLine(" ");
 					Console.WriteLine("Enter the Id of the an existing Address if you want to change something, and just press enter to generate a new Address:");
 						string tempAddress = Console.ReadLine();
 						int AddressId;

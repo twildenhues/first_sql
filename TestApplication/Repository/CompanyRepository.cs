@@ -19,15 +19,19 @@ class CompanyRepository
 			switch (key)
 			{
 				case '1':
+						Console.WriteLine(" ");
 						test.CreatingOrUpdatingCompany(conn); ;
 					break;
 				case '2':
+						Console.WriteLine(" ");
 						test.ReadCompany(conn);
 					break;
 				case '3':
+						Console.WriteLine(" ");
 						test.DeleteCompany(conn);
 					break;
 				default:
+						Console.WriteLine(" ");
 						Console.WriteLine("Falsche Eingabe");
 					break;
 			}
@@ -37,7 +41,6 @@ class CompanyRepository
 	private void ReadCompany(SqlConnection conn)
 	{
 		SqlCommand view = new SqlCommand("SELECT * FROM viCompany", conn);
-		Console.WriteLine(" ");
 		Console.WriteLine(("   Id").PadRight(25, ' ')+("   Name").PadRight(25, ' ')+("   CreatedTimed").PadRight(25, ' ')+("   Country").PadRight(25, ' ')+("   City").PadRight(25, ' ')+("   Zip").PadRight(25, ' ')+("   Street").PadRight(25, ' ')+ ("   Departement").PadRight(25, ' '));
 		using (SqlDataAdapter a = new SqlDataAdapter(view))
 		{
@@ -62,7 +65,6 @@ class CompanyRepository
 	{
 		try
 		{
-			Console.WriteLine(" ");
 			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
 			string tempCompany = Console.ReadLine();
 			int CompanyId;
@@ -86,8 +88,6 @@ class CompanyRepository
 		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
 		{
 			insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-			Console.WriteLine(" ");
 				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Company. Else just press enter to generate a new Company");
 					string tempCompany = Console.ReadLine();
 					int CompanyId;
