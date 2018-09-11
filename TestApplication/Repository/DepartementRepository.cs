@@ -8,24 +8,27 @@ using System.Data;
 		static void Main(string[] args)
 		{
 			DepartementRepository test = new DepartementRepository();
-			char key = Console.ReadKey().KeyChar;
+			Console.WriteLine("press '1' to add or update a Departement");
+			Console.WriteLine("press '2' to see all current Departements");
+			Console.WriteLine("press '3' to delete a Departement");
+		char key = Console.ReadKey().KeyChar;
 			using (SqlConnection conn = new SqlConnection())
 			{
 				conn.ConnectionString = "Data Source=tappqa;Initial Catalog=Training-TW-Company;Integrated Security=True";
 				conn.Open();
-				switch (key)
+			switch (key)
 				{
 					case '1':
-						test.CreatingOrUpdatingDepartement(conn); ;
+							test.CreatingOrUpdatingDepartement(conn); ;
 						break;
 					case '2':
-						test.ReadDepartement(conn);
+							test.ReadDepartement(conn);
 						break;
 					case '3':
-						test.DeleteDepartement(conn); 
+							test.DeleteDepartement(conn); 
 						break;
 					default:
-						Console.WriteLine("Falsche Eingabe"); 
+							Console.WriteLine("Falsche Eingabe"); 
 						break;
 				}
 			}
@@ -46,10 +49,14 @@ using System.Data;
 						Console.Write(row[i].ToString() + "\t");
 					}
 					Console.WriteLine();
-					conn.Close();
+
 				}
 			}
-	}
+			conn.Close();
+			Console.WriteLine("Finished! Now press enter to clear!");
+			Console.ReadLine();
+			Console.Clear();
+		}
 
 	private void DeleteDepartement(SqlConnection conn)
 	{
@@ -76,7 +83,7 @@ using System.Data;
 	{
 		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
 		{
-			insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
+			insertCommand.CommandType = CommandType.StoredProcedure;
 			Console.WriteLine(" ");
 				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Departement. Else just press enter to generate a new Departement:");
 					string tempDepartement = Console.ReadLine();
@@ -85,7 +92,7 @@ using System.Data;
 					insertCommand.Parameters.AddWithValue("@Id", (DepartementId == 0) ? -1 : DepartementId);
 			Console.WriteLine(" ");
 				Console.WriteLine("Please enter the name of the Departement:");
-					insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
+					insertCommand.Parameters.Add("@Name", SqlDbType.NVarChar).Value = Console.ReadLine();
 			Console.WriteLine(" ");
 				Console.WriteLine("Please enter the Id of the Company this Departement belongs to. If you want to do it later, press enter:");
 					string temp = Console.ReadLine();
@@ -94,10 +101,10 @@ using System.Data;
 					insertCommand.Parameters.AddWithValue("@CompanyId", (id == 0) ? -1 : id);
 
 			insertCommand.ExecuteNonQuery();
-			conn.Close();
-			Console.WriteLine("Finished! Now press enter to clear!");
-			Console.ReadLine();
-			Console.Clear();
 		}
+		conn.Close();
+		Console.WriteLine("Finished! Now press enter to clear!");
+		Console.ReadLine();
+		Console.Clear();
 	}
 }

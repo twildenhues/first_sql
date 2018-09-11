@@ -8,6 +8,9 @@ class CompanyRepository
 	static void Main(string[] args)
 	{
 		CompanyRepository test = new CompanyRepository();
+		Console.WriteLine("press '1' to add or update a Company");
+		Console.WriteLine("press '2' to see all current Companys");
+		Console.WriteLine("press '3' to delete a Company");
 		char key = Console.ReadKey().KeyChar;
 		using (SqlConnection conn = new SqlConnection())
 		{
@@ -16,16 +19,16 @@ class CompanyRepository
 			switch (key)
 			{
 				case '1':
-					test.CreatingOrUpdatingCompany(conn); ;
+						test.CreatingOrUpdatingCompany(conn); ;
 					break;
 				case '2':
-					test.ReadCompany(conn);
+						test.ReadCompany(conn);
 					break;
 				case '3':
-					test.DeleteCompany(conn);
+						test.DeleteCompany(conn);
 					break;
 				default:
-					Console.WriteLine("Falsche Eingabe");
+						Console.WriteLine("Falsche Eingabe");
 					break;
 			}
 		}
@@ -48,49 +51,52 @@ class CompanyRepository
 				Console.WriteLine();
 			}
 			conn.Close();
+			Console.WriteLine("Finished! Now press enter to clear!");
+			Console.ReadLine();
+			Console.Clear();
 		}
 	}
-		private void DeleteCompany(SqlConnection conn)
+	private void DeleteCompany(SqlConnection conn)
+	{
+		try
 		{
-			try
+		Console.WriteLine("Please insert the Id of the Compony you want to delete:");
+			string tempCompany = Console.ReadLine();
+			int CompanyId;
+			Int32.TryParse(tempCompany, out CompanyId);
+		using (SqlCommand command = new SqlCommand("DELETE FROM Compony WHERE Company.Id = '" + CompanyId + "'", conn))
 			{
-			Console.WriteLine("Please insert the Id of the Compony you want to delete:");
-				string tempCompany = Console.ReadLine();
-				int CompanyId;
-				Int32.TryParse(tempCompany, out CompanyId);
-			using (SqlCommand command = new SqlCommand("DELETE FROM Compony WHERE Company.Id = '" + CompanyId + "'", conn))
-				{
-					command.ExecuteNonQuery();
-				}
-				conn.Close();
+				command.ExecuteNonQuery();
+			}
+			conn.Close();
 				
-			}
-			catch (SystemException ex)
-			{
-				Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
-			}
 		}
-		void CreatingOrUpdatingCompany(SqlConnection conn)
+		catch (SystemException ex)
 		{
-
-			using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
-			{
-				insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-				Console.WriteLine(" ");
-					Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Company. Else just press enter to generate a new Company");
-						string tempCompany = Console.ReadLine();
-						int CompanyId;
-						Int32.TryParse(tempCompany, out CompanyId);
-						insertCommand.Parameters.AddWithValue("@Id", (CompanyId == 0) ? -1 : CompanyId);
-				Console.WriteLine(" ");
-					Console.WriteLine("Please enter the name of the Company:");
-						insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
-			insertCommand.ExecuteNonQuery();
-				conn.Close();
-				Console.WriteLine("Finished! Now press enter to clear!");
-				Console.ReadLine();
-				Console.Clear();
-			}
+			Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
 		}
 	}
+	void CreatingOrUpdatingCompany(SqlConnection conn)
+	{
+
+		using (SqlCommand insertCommand = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
+		{
+			insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+			Console.WriteLine(" ");
+				Console.WriteLine("Please enter now the Id, if you want to change the name of an existing Company. Else just press enter to generate a new Company");
+					string tempCompany = Console.ReadLine();
+					int CompanyId;
+					Int32.TryParse(tempCompany, out CompanyId);
+					insertCommand.Parameters.AddWithValue("@Id", (CompanyId == 0) ? -1 : CompanyId);
+			Console.WriteLine(" ");
+				Console.WriteLine("Please enter the name of the Company:");
+					insertCommand.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = Console.ReadLine();
+		insertCommand.ExecuteNonQuery();
+		}
+	conn.Close();
+	Console.WriteLine("Finished! Now press enter to clear!");
+	Console.ReadLine();
+	Console.Clear();
+	}
+}

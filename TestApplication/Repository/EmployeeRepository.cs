@@ -10,6 +10,9 @@ namespace TestApplication.Repository
 		static void Main(string[] args)
 		{
 			EmployeeRepository test = new EmployeeRepository();
+			Console.WriteLine("press '1' to add or update an Employee");
+			Console.WriteLine("press '2' to see all current Employees");
+			Console.WriteLine("press '3' to delete an Employee");
 			char key = Console.ReadKey().KeyChar;
 			using (SqlConnection conn = new SqlConnection())
 			{
@@ -48,9 +51,12 @@ namespace TestApplication.Repository
 						Console.Write(row[i].ToString() + "\t");
 					}
 					Console.WriteLine();
-					conn.Close();
 				}
 			}
+			conn.Close();
+			Console.WriteLine("Finished! Now press enter to clear!");
+			Console.ReadLine();
+			Console.Clear();
 		}
 
 		private void DeleteEmployee(SqlConnection conn)
@@ -110,14 +116,12 @@ namespace TestApplication.Repository
 						int dIdAsInt;
 						Int32.TryParse(dId, out dIdAsInt);
 						insertCommand.Parameters.AddWithValue("@DepartementId", (dIdAsInt == 0) ? -1 : dIdAsInt);
+				insertCommand.ExecuteNonQuery();
 			}
-
-			insertCommand.ExecuteNonQuery();
 			conn.Close();
 			Console.WriteLine("Finished! Now press enter to clear!");
 			Console.ReadLine();
 			Console.Clear();
 		}
 	}
-
 }

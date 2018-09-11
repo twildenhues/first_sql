@@ -10,6 +10,9 @@ namespace TestApplication.Repository
 		static void Main(string[] args)
 		{
 			AddressRepository test = new AddressRepository();
+			Console.WriteLine("press '1' to add or update a Address");
+			Console.WriteLine("press '2' to see all current Addresses");
+			Console.WriteLine("press '3' to delete a Address");
 			char key = Console.ReadKey().KeyChar;
 			using (SqlConnection conn = new SqlConnection())
 			{
@@ -18,16 +21,16 @@ namespace TestApplication.Repository
 				switch (key)
 				{
 					case '1':
-						test.CreatingOrUpdatingAddress(conn); ;
+							test.CreatingOrUpdatingAddress(conn); ;
 						break;
 					case '2':
-						test.ReadAddress(conn); ;
+							test.ReadAddress(conn); ;
 						break;
 					case '3':
-						test.DeleteAddress(conn);
+							test.DeleteAddress(conn);
 						break;
 					default:
-						Console.WriteLine("Falsche Eingabe");
+							Console.WriteLine("Falsche Eingabe");
 						break;
 				}
 			}
@@ -50,6 +53,9 @@ namespace TestApplication.Repository
 					Console.WriteLine();
 				}
 				conn.Close();
+				Console.WriteLine("Finished! Now press enter to clear!");
+				Console.ReadLine();
+				Console.Clear();
 			}
 		}
 
@@ -104,32 +110,31 @@ namespace TestApplication.Repository
 				var input = Console.ReadKey().KeyChar;
 				switch (input) {
 					case 'E':
-						Console.WriteLine("Enter the Id of the Employee:");
-						string EmployeeId = Console.ReadLine();
-						int Employee;
-						Int32.TryParse(EmployeeId, out Employee);
-						insertCommand.Parameters.AddWithValue("@EmployeeId", (Employee == 0) ? -1 : Employee);
-						;
+							Console.WriteLine("Enter the Id of the Employee:");
+							string EmployeeId = Console.ReadLine();
+							int Employee;
+							Int32.TryParse(EmployeeId, out Employee);
+							insertCommand.Parameters.AddWithValue("@EmployeeId", (Employee == 0) ? -1 : Employee);
+							;
 						break;
 					case 'C':
-						Console.WriteLine("Enter the Id the Company:");
-						string CompanyId = Console.ReadLine();
-						int Company;
-						Int32.TryParse(CompanyId, out Company);
-						insertCommand.Parameters.AddWithValue("@CompanyId", (Company == 0) ? -1 : Company);
-						;
+							Console.WriteLine("Enter the Id the Company:");
+							string CompanyId = Console.ReadLine();
+							int Company;
+							Int32.TryParse(CompanyId, out Company);
+							insertCommand.Parameters.AddWithValue("@CompanyId", (Company == 0) ? -1 : Company);
+							;
 						break;
-					default: Console.WriteLine("Falsche Eingabe!");
+					default:
+							Console.WriteLine("Falsche Eingabe!");
 						break;
-
-
 				}
 				insertCommand.ExecuteNonQuery();
-				conn.Close();
-				Console.WriteLine("Finished! Now press enter to clear!");
-				Console.ReadLine();
-				Console.Clear();
 			}
+			conn.Close();
+			Console.WriteLine("Finished! Now press enter to clear!");
+			Console.ReadLine();
+			Console.Clear();
 		}
 	}
 }
