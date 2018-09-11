@@ -38,6 +38,7 @@ namespace TestApplication.Repository
 
 		private void ReadAddress(SqlConnection conn)
 		{
+			Console.WriteLine(("   Id").PadRight(25, ' ')+("   Country").PadRight(25, ' ') + ("   City").PadRight(25, ' ') + ("   Zip").PadRight(25, ' ') + ("   Street").PadRight(25, ' '));
 			SqlCommand view = new SqlCommand("SELECT * FROM viAddress", conn);
 			using (SqlDataAdapter a = new SqlDataAdapter(view))
 			{
@@ -48,7 +49,7 @@ namespace TestApplication.Repository
 				{
 					for (int i = 0; i < dt.Columns.Count; i++)
 					{
-						Console.Write(row[i].ToString() + "\t");
+						Console.Write("   "+(row[i].ToString()).PadRight(25, ' '));
 					}
 					Console.WriteLine();
 				}

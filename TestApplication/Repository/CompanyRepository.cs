@@ -38,7 +38,7 @@ class CompanyRepository
 	{
 		SqlCommand view = new SqlCommand("SELECT * FROM viCompany", conn);
 		Console.WriteLine(" ");
-		Console.WriteLine(("   Id").PadRight(20, ' ')+("   Name").PadRight(20, ' ')+("   CreatedTimed").PadRight(20, ' ')+("   Country").PadRight(20, ' ')+("   City").PadRight(20, ' ')+("   Zip").PadRight(20, ' ')+("   Street").PadRight(20, ' ')+ ("   Departement").PadRight(20, ' '));
+		Console.WriteLine(("   Id").PadRight(25, ' ')+("   Name").PadRight(25, ' ')+("   CreatedTimed").PadRight(25, ' ')+("   Country").PadRight(25, ' ')+("   City").PadRight(25, ' ')+("   Zip").PadRight(25, ' ')+("   Street").PadRight(25, ' ')+ ("   Departement").PadRight(25, ' '));
 		using (SqlDataAdapter a = new SqlDataAdapter(view))
 		{
 			DataTable dt = new DataTable();
@@ -48,7 +48,7 @@ class CompanyRepository
 			{
 				for (int i = 0; i < dt.Columns.Count; i++)
 				{
-					Console.Write(("   " +row[i].ToString()).PadRight(20, ' '));
+					Console.Write(("   " +row[i].ToString()).PadRight(25, ' '));
 				}
 				Console.WriteLine();
 			}

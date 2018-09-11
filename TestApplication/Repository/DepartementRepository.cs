@@ -36,6 +36,7 @@ using System.Data;
 
 		private void ReadDepartement(SqlConnection conn)
 		{
+		Console.WriteLine(("   Id").PadRight(25, ' ')+("   CompanyId").PadRight(25, ' ')+("   DepartementName").PadRight(25, ' ')+("   ManagerId").PadRight(25, ' ')+("   CreatedTime").PadRight(25, ' '));
 			SqlCommand view = new SqlCommand("SELECT * FROM viDepartement", conn);
 			using (SqlDataAdapter a = new SqlDataAdapter(view))
 			{
@@ -46,7 +47,7 @@ using System.Data;
 				{
 					for (int i = 0; i < dt.Columns.Count; i++)
 					{
-						Console.Write(row[i].ToString() + "\t");
+						Console.Write("   " + (row[i].ToString()).PadRight(25, ' '));
 					}
 					Console.WriteLine();
 
@@ -101,6 +102,9 @@ using System.Data;
 					int id;
 					Int32.TryParse(temp, out id);
 					insertCommand.Parameters.AddWithValue("@CompanyId", (id == 0) ? -1 : id);
+			Console.WriteLine(" ");
+				Console.WriteLine("Please enter the PersonId that belongs to the Manager in this Apartement. You can skip this by pressing enter:");
+					insertCommand.Parameters.Add("@ManagerId", SqlDbType.NVarChar).Value = Console.ReadLine();
 
 			insertCommand.ExecuteNonQuery();
 		}

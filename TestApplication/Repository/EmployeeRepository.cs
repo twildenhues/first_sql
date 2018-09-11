@@ -38,6 +38,8 @@ namespace TestApplication.Repository
 
 		private void ReadEmployee(SqlConnection conn)
 		{
+			Console.WriteLine(
+				("   Id").PadRight(25, ' ')+("   First Name").PadRight(25, ' ')+("   Last Name").PadRight(25, ' ')+("   Birthday").PadRight(25, ' ')+("   DepartementId").PadRight(25, ' ')+("   CreatedTime").PadRight(25, ' ')+("   Country").PadRight(25, ' ')+("   City").PadRight(25, ' ')+("   Zip").PadRight(25, ' ')+("   Street").PadRight(25, ' '));
 			SqlCommand view = new SqlCommand("SELECT * FROM viEmployee", conn);
 			using (SqlDataAdapter a = new SqlDataAdapter(view))
 			{
@@ -48,7 +50,7 @@ namespace TestApplication.Repository
 				{
 					for (int i = 0; i < dt.Columns.Count; i++)
 					{
-						Console.Write(row[i].ToString() + "\t");
+						Console.Write("   " + (row[i].ToString()).PadRight(25, ' '));
 					}
 					Console.WriteLine();
 				}
