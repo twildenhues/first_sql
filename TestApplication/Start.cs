@@ -11,6 +11,7 @@ namespace TestApplication
 		}
 		private void Run() {
 			CompanyController Company = new CompanyController();
+			Models.Company test = new Models.Company();
 			/*Repository.DepartementRepository Departement = new Repository.DepartementRepository();
 				Departement.Run();
 			Repository.EmployeeRepository Employee = new Repository.EmployeeRepository();
