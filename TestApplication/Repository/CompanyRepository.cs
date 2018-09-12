@@ -33,15 +33,15 @@ namespace TestApplication.Repository
 				Models.Company mdl = new Models.Company();
 				a.Fill(dt);
 				if (dt.Rows.Count != 0) {
-					mdl.Id = (int)dt.Rows[0][0];
+					mdl.Id = dt.Rows[0][0] != null ? (int)dt.Rows[0][0] : 0;
 					mdl.Name = dt.Rows[0][1].ToString();
 					mdl.CreatedTime = (DateTime)dt.Rows[0][2];
 					mdl.Country = dt.Rows[0][3].ToString();
 					mdl.City = dt.Rows[0][4].ToString();
-					mdl.Zip = (int) dt.Rows[0][5];
+					mdl.Zip = dt.Rows[0][5] != null ? (int) dt.Rows[0][5] : 0;
 					mdl.Street = dt.Rows[0][6].ToString();
 					mdl.DepartementName = dt.Rows[0][7].ToString();
-					mdl.ManagerId = (int) dt.Rows[0][8];
+					mdl.ManagerId = dt.Rows[0][8] != null ? (int) dt.Rows[0][8] : 0;
 					return mdl;
 				} else {
 					return null;
