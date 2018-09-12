@@ -10,7 +10,7 @@ namespace TestApplication
 			application.Run();
 		}
 		private void Run() {
-			Repository.CompanyRepository Company = new Repository.CompanyRepository();
+			CompanyController Company = new CompanyController();
 			/*Repository.DepartementRepository Departement = new Repository.DepartementRepository();
 				Departement.Run();
 			Repository.EmployeeRepository Employee = new Repository.EmployeeRepository();
@@ -24,41 +24,7 @@ namespace TestApplication
 				switch(key){
 					case 'C':
 					case 'c':
-							Console.WriteLine(" ");
-								Console.WriteLine("press '1' to add or update a Company");
-								Console.WriteLine("press '2' to see all current Companys");
-								Console.WriteLine("press '3' to delete a Company");
-									char innerKey = Console.ReadKey().KeyChar;
-										switch (innerKey)
-										{
-											case '1':
-												Console.WriteLine(" ");
-												Company.CreatingOrUpdatingCompany(); ;
-												break;
-											case '2':
-												Console.WriteLine(" ");
-												DataTable dt = Company.ReadCompany();
-												foreach (DataRow row in dt.Rows)
-												{
-													for (int i = 0; i < dt.Columns.Count; i++)
-													{
-														Console.Write(("   " + row[i].ToString()).PadRight(25, ' '));
-													}
-													Console.WriteLine();
-												}
-												Console.WriteLine(" ");
-												Console.WriteLine("Finished! Now press enter to clear!");
-												Console.ReadLine();
-												Console.Clear();
-												break;
-											case '3':
-							
-												break;
-											default:
-													Console.WriteLine(" ");
-													Console.WriteLine("Falsche Eingabe");
-												break;
-										}
+							Company.Run();
 							Console.Clear();
 							Intro();
 						break;
