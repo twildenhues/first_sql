@@ -6,11 +6,6 @@ namespace TestApplication
 {
 	class CompanyController
 	{
-		public static void Main(string[] args)
-		{
-			CompanyController application = new CompanyController();
-			application.Run();
-		}
 		public void Run()
 		{
 			using (Repository.CompanyRepository Company = new Repository.CompanyRepository())
@@ -60,9 +55,9 @@ namespace TestApplication
 								foreach (Models.Company content in dt)
 								{
 									Console.Write(content.Id == 0 ? "---\t" : content.Id + "\t");
-									Console.Write(content.Name == null ? "---\t" : content.Name + "\t");
+									Console.Write((content.Name ?? "---") + "\t");
 									Console.Write(content.CreatedTime == null ? "---\t" : content.CreatedTime + "\t");
-									Console.Write(content.Country == null ? "---\t" : content.Country + "\t");
+									Console.Write((content.Country ?? "---") + "\t");
 									Console.Write(content.City == null ? "---\t" : content.City + "\t");
 									Console.Write(content.Zip == 0 ? "---\t" : content.Zip + "\t");
 									Console.Write(content.Street == null ? "---\t" : content.Street + "\t");
