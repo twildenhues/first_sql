@@ -16,7 +16,7 @@ namespace TestApplication.Repository
 			char key = Console.ReadKey().KeyChar;
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = "Data Source=tappqa;Initial Catalog=Training-TW-Company;Integrated Security=True";
+				conn.ConnectionString = Properties.Settings.Default.ConStringTappqa;
 				conn.Open();
 				switch (key)
 				{

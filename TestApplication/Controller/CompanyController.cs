@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace TestApplication
@@ -38,28 +39,37 @@ namespace TestApplication
 							if (c != null)
 							{
 								Console.WriteLine("Die Company Wurde erstellt!");
-								Console.Write(c.Name == null ? "Name not found\t" : c.Name + "\t");
-								Console.Write(c.Id == 0 ? "Id not found\t" : c.Id + "\t");
-								Console.Write(c.CreatedTime == null ? "CreatedTime not found\t" : c.CreatedTime + "\t");
-								Console.Write(c.Country == null ? "Country not found\t" : c.Country + "\t");
-								Console.Write(c.City == null ? "City not found\t" : c.City + "\t");
-								Console.Write(c.Zip == 0 ? "Zip not found\t" : c.Zip + "\t");
-								Console.Write(c.Street == null ? "Street not found\t" : c.Street + "\t");
-								Console.Write(c.DepartementName == null ? "DepartementName not found\t" : c.DepartementName + "\t");
-								Console.Write(c.ManagerId == 0 ? "ManagerId not found\t" : c.ManagerId + "\t");
+								Console.Write(c.Name == null ? "---\t" : c.Name + "\t");
+								Console.Write(c.Id == 0 ? "---\t" : c.Id + "\t");
+								Console.Write(c.CreatedTime == null ? "---\t" : c.CreatedTime + "\t");
+								Console.Write(c.Country == null ? "---\t" : c.Country + "\t");
+								Console.Write(c.City == null ? "---\t" : c.City + "\t");
+								Console.Write(c.Zip == 0 ? "---\t" : c.Zip + "\t");
+								Console.Write(c.Street == null ? "---\t" : c.Street + "\t");
+								Console.Write(c.DepartementName == null ? "---\t" : c.DepartementName + "\t");
+								Console.Write(c.ManagerId == 0 ? "---\t" : c.ManagerId + "\t");
 							}
 							break;
 						case '2':
 							Console.WriteLine(" ");
-							DataTable dt = Company.ReadCompany();
+							List<Models.Company> dt = Company.ReadCompany();
 							Console.WriteLine(("   Id").PadRight(25, ' ') + ("   Name").PadRight(25, ' ') + ("   CreatedTimed").PadRight(25, ' ') + ("   Country").PadRight(25, ' ') + ("   City").PadRight(25, ' ') + ("   Zip").PadRight(25, ' ') + ("   Street").PadRight(25, ' ') + ("   Departement").PadRight(25, ' '));
-							foreach (DataRow row in dt.Rows)
+							if (dt != null)
 							{
-								for (int i = 0; i < dt.Columns.Count; i++)
+								foreach (Models.Company content in dt)
 								{
-									Console.Write(("   " + row[i].ToString()).PadRight(25, ' '));
+
+									Console.WriteLine("Die Company Wurde erstellt!");
+									Console.Write(content.Name == null ? "---\t" : content.Name + "\t");
+									Console.Write(content.Id == 0 ? "---\t" : content.Id + "\t");
+									Console.Write(content.CreatedTime == null ? "---\t" : content.CreatedTime + "\t");
+									Console.Write(content.Country == null ? "---\t" : content.Country + "\t");
+									Console.Write(content.City == null ? "---\t" : content.City + "\t");
+									Console.Write(content.Zip == 0 ? "---\t" : content.Zip + "\t");
+									Console.Write(content.Street == null ? "---\t" : content.Street + "\t");
+									Console.Write(content.DepartementName == null ? "---\t" : content.DepartementName + "\t");
+									Console.Write(content.ManagerId == 0 ? "---\t" : content.ManagerId + "\t");
 								}
-								Console.WriteLine();
 							}
 							Console.WriteLine(" ");
 							Console.WriteLine("Finished! Now press enter to clear!");
