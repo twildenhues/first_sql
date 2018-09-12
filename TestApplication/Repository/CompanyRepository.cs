@@ -33,9 +33,12 @@ namespace TestApplication.Repository
 		{
 			try
 			{
-				using (SqlCommand command = new SqlCommand("DELETE FROM Company WHERE Company.Id = @Id", conn))
+				using (SqlCommand command = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
 				{
+					DateTime now = new DateTime();
+					now = DateTime.Now;
 					command.Parameters.AddWithValue("@Id", CompanyId);
+					command.Parameters.AddWithValue("@DeletedTime", now);
 					int retval = command.ExecuteNonQuery();
 					return (retval > 0);
 				}

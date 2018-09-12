@@ -84,10 +84,16 @@ namespace TestApplication
 							Int32.TryParse(DeleteTempCompany, out DeleteCompanyId);
 							try
 							{
-								Company.DeleteCompany(DeleteCompanyId);
-								Console.WriteLine("successfully deleted! Press enter to go to the menu ");
+								bool success = Company.DeleteCompany(DeleteCompanyId);
+								if (success) {
+									Console.WriteLine("successfully deleted! Press enter to go to the menu ");
+								}else {
+									Console.WriteLine("deletion failed! Press enter to go to the menu");
+								}
+
 								Console.ReadLine();
 								Console.Clear();
+
 							}
 							catch (SystemException ex)
 							{
