@@ -2,6 +2,8 @@
 using System.Data.SqlClient;
 using System.Data;
 using System.Collections.Generic;
+using Dapper;
+using System.Linq;
 
 namespace TestApplication.Repository
 {
@@ -12,64 +14,20 @@ namespace TestApplication.Repository
 			conn.ConnectionString = Properties.Settings.Default.ConStringTappqa;
 			conn.Open();
 		}
-
 		public List<Models.Company> ReadCompany()
 		{
-			SqlCommand view = new SqlCommand("SELECT Id, Name, CreatedTime, Country, City, Zip, Street, DepartementName, ManagerId FROM viCompany", conn);
-			using (SqlDataAdapter a = new SqlDataAdapter(view))
-			{
-				DataTable dt = new DataTable();
-				a.Fill(dt);
-				if (dt.Rows.Count != 0)
-				{
-					List<Models.Company> temp = new List<Models.Company>();
-					foreach (DataRow row in dt.Rows)
-					{
-							Models.Company mdl = new Models.Company();
-							mdl.Id = !DBNull.Value.Equals(dt.Rows[0][0]) ? (int)dt.Rows[0][05] : 0;
-							mdl.Name = dt.Rows[0][1].ToString();
-							mdl.CreatedTime = (DateTime)dt.Rows[0][2];
-							mdl.Country = dt.Rows[0][3].ToString();
-							mdl.City = dt.Rows[0][4].ToString();
-							mdl.Zip = !DBNull.Value.Equals(dt.Rows[0][5]) ? (int)dt.Rows[0][5] : 0;
-							mdl.Street = dt.Rows[0][6].ToString();
-							mdl.DepartementName = dt.Rows[0][7].ToString();
-							mdl.ManagerId = !DBNull.Value.Equals(dt.Rows[0][8]) ? (int)dt.Rows[0][8] : 0;
-							temp.Add(mdl);
-					}
-					return temp;
-				}
-				else
-				{
-					return null;
-				}
-			}
+			string sqlcmd = "SELECT Id, Name, CreatedTime, Country, City, Zip, Street, DepartementName, ManagerId FROM viCompany";			
+			var test = conn.Query<Models.Company>(sqlcmd).ToList();
+				return test;	
 		}
-
 		public Models.Company Read(int Id)
 		{
-			SqlCommand cmd = new SqlCommand("SELECT Id, Name, CreatedTime, Country, City, Zip, Street, DepartementName, ManagerId FROM viCompany where Id = @Id", conn);
-			cmd.Parameters.AddWithValue("@Id", Id);
-			using (SqlDataAdapter a = new SqlDataAdapter(cmd))
-			{
-				DataTable dt = new DataTable();
-				Models.Company mdl = new Models.Company();
-				a.Fill(dt);
-				if (dt.Rows.Count != 0) {
-					mdl.Id = !DBNull.Value.Equals(dt.Rows[0][0]) ? (int)dt.Rows[0][05] : 0;
-					mdl.Name = dt.Rows[0][1].ToString();
-					mdl.CreatedTime = (DateTime)dt.Rows[0][2];
-					mdl.Country = dt.Rows[0][3].ToString();
-					mdl.City = dt.Rows[0][4].ToString();
-					mdl.Zip = !DBNull.Value.Equals(dt.Rows[0][5]) ? (int) dt.Rows[0][5] : 0;
-					mdl.Street = dt.Rows[0][6].ToString();
-					mdl.DepartementName = dt.Rows[0][7].ToString();
-					mdl.ManagerId = !DBNull.Value.Equals(dt.Rows[0][8]) ? (int)dt.Rows[0][8] : 0;
-					return mdl;
-				} else {
-					return null;
-				}
-			}
+			string sqlcmd = "SELECT Id, Name, CreatedTime, Country, City, Zip, Street, DepartementName, ManagerId FROM viCompany where Id = @Id";
+			var param = new DynamicParameters();
+			param.Add("@Id", Id);
+			var company = conn.QueryFirstOrDefault<Models.Company>(sqlcmd, param);
+			return company;
+
 		}
 		public bool DeleteCompany(int CompanyId)
 		{

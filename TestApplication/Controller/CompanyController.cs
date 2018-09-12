@@ -38,6 +38,7 @@ namespace TestApplication
 							var c = Company.CreatingOrUpdatingCompany(CompanyId, value);
 							if (c != null)
 							{
+								
 								Console.WriteLine("Die Company Wurde erstellt!");
 								Console.Write(c.Name == null ? "---\t" : c.Name + "\t");
 								Console.Write(c.Id == 0 ? "---\t" : c.Id + "\t");
@@ -53,15 +54,13 @@ namespace TestApplication
 						case '2':
 							Console.WriteLine(" ");
 							List<Models.Company> dt = Company.ReadCompany();
-							Console.WriteLine(("   Id").PadRight(25, ' ') + ("   Name").PadRight(25, ' ') + ("   CreatedTimed").PadRight(25, ' ') + ("   Country").PadRight(25, ' ') + ("   City").PadRight(25, ' ') + ("   Zip").PadRight(25, ' ') + ("   Street").PadRight(25, ' ') + ("   Departement").PadRight(25, ' '));
+							Console.WriteLine(("   Id").PadRight(10, ' ') + ("   Name").PadRight(10, ' ') + ("   CreatedTimed").PadRight(10, ' ') + ("   Country").PadRight(10, ' ') + ("   City").PadRight(10, ' ') + ("   Zip").PadRight(10, ' ') + ("   Street").PadRight(10, ' ') + ("   Departement").PadRight(10, ' '));
 							if (dt != null)
 							{
 								foreach (Models.Company content in dt)
 								{
-
-									Console.WriteLine("Die Company Wurde erstellt!");
-									Console.Write(content.Name == null ? "---\t" : content.Name + "\t");
 									Console.Write(content.Id == 0 ? "---\t" : content.Id + "\t");
+									Console.Write(content.Name == null ? "---\t" : content.Name + "\t");
 									Console.Write(content.CreatedTime == null ? "---\t" : content.CreatedTime + "\t");
 									Console.Write(content.Country == null ? "---\t" : content.Country + "\t");
 									Console.Write(content.City == null ? "---\t" : content.City + "\t");
@@ -69,6 +68,7 @@ namespace TestApplication
 									Console.Write(content.Street == null ? "---\t" : content.Street + "\t");
 									Console.Write(content.DepartementName == null ? "---\t" : content.DepartementName + "\t");
 									Console.Write(content.ManagerId == 0 ? "---\t" : content.ManagerId + "\t");
+									Console.WriteLine(" ");
 								}
 							}
 							Console.WriteLine(" ");
