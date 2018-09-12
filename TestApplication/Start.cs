@@ -12,12 +12,9 @@ namespace TestApplication
 		private void Run() {
 			CompanyController Company = new CompanyController();
 			Models.Company test = new Models.Company();
-			/*Repository.DepartementRepository Departement = new Repository.DepartementRepository();
-				Departement.Run();
+			Repository.DepartementRepository Departement = new Repository.DepartementRepository();
 			Repository.EmployeeRepository Employee = new Repository.EmployeeRepository();
-				Employee.Run();
 			Repository.AddressRepository Address = new Repository.AddressRepository();
-				Address.Run();*/
 			bool running = true;
 			Intro();
 			while (running) {
@@ -32,18 +29,21 @@ namespace TestApplication
 					case 'D':
 					case 'd':
 							Console.WriteLine(" ");
+							Departement.Run();
 							Console.Clear();
 							Intro();
 						break;
 					case 'E':
 					case 'e':
 							Console.WriteLine(" ");
+							Employee.Run();
 							Console.Clear();
 							Intro();
 						break;
 					case 'A':
 					case 'a':
 							Console.WriteLine(" ");
+							Address.Run();
 							Console.Clear();
 							Intro();
 						break;
