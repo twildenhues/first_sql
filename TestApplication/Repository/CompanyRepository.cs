@@ -35,17 +35,19 @@ namespace TestApplication.Repository
 			{
 				using (SqlCommand command = new SqlCommand("dbo.spCreateOrUpdateCompany", conn))
 				{
+					command.CommandType = System.Data.CommandType.StoredProcedure;
 					DateTime now = new DateTime();
 					now = DateTime.Now;
+					command.Parameters.AddWithValue("@Name", DBNull.Value);
 					command.Parameters.AddWithValue("@Id", CompanyId);
-					command.Parameters.AddWithValue("@DeletedTime", now);
+					command.Parameters.AddWithValue("@Delete", now);
 					int retval = command.ExecuteNonQuery();
 					return (retval > 0);
 				}
 			}
 			catch (SystemException ex)
 			{
-				Console.WriteLine(string.Format("An error occurred: {0}", ex.Message));
+				Console.WriteLine(string.Format("An error occurred: {0}", ex.ToString()));
 				return false;
 			}
 		}

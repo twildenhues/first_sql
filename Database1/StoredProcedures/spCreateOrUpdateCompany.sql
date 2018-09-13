@@ -8,7 +8,7 @@ BEGIN
 	declare @DBId int
 	Set @DBId = (select Id from Company where Id = @Id)
 	
-	if(@DBId is null)
+	if(@DBId is null AND @Delete IS NULL)
 	BEGIN 
 
 		INSERT INTO [dbo].Company	(
